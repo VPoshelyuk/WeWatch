@@ -1,0 +1,5 @@
+class User < ApplicationRecord
+
+    validates :user_name, :first_name, :last_name, :age, :password, :phone_number, presence: true
+    validates :phone_number, length: { is: 9 }
+end
