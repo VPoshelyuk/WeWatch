@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :set_user, only: [:show, :edit, :signin]
+
     def index
         @users = User.all
     end
@@ -21,12 +23,29 @@ class UsersController < ApplicationController
     end
 
     def signin
-        @user = User.find(params[:id])
         redirect_to user_path(@user)
     end 
 
+    def edit
+    end
+
+    def update
+        @user.update(user_params)
+
+        if @user.save
+            flash[:notice] = "Your Account Has Been Created Successfully!"
+            redirect_to user_path
+        else
+            flash[:notice] = "Please Try Again"
+            redirect_to new_user_path
+        end
+    end
+
 
     private
+    def set_user
+        @user = User.find(params[:id])
+    end
 
     def user_params
         params.require(:user).permit(

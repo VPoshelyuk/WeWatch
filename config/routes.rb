@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :ratings
+  resources :seasons
+  resources :achievements
+  resources :user_achievements
   resources :follows
   resources :views
   resources :shows
