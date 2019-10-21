@@ -19,6 +19,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def signin
+        @user = User.find(params[:id])
+        redirect_to user_path(@user)
+    end 
+
 
     private
 
