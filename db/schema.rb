@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_10_21_162505) do
 
   create_table "follows", force: :cascade do |t|
@@ -31,12 +30,6 @@ ActiveRecord::Schema.define(version: 2019_10_21_162505) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "views", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "show_id"
-=======
-ActiveRecord::Schema.define(version: 2019_10_21_145554) do
-
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "first_name"
@@ -44,7 +37,13 @@ ActiveRecord::Schema.define(version: 2019_10_21_145554) do
     t.integer "age"
     t.string "password"
     t.string "phone_number"
->>>>>>> 265a1dbe220d79fb886126bb08b52edbd4a8f299
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "show_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

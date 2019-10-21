@@ -14,9 +14,10 @@ class UsersController < ApplicationController
 
         if @user.save
             flash[:notice] = "Your Account Has Been Created Successfully!"
-            redirect_to user_path
+            redirect_to user_path(@user)
         else
             flash[:notice] = "Please Try Again"
+            flash[:errors] = @user.errors.full_messages
             redirect_to new_user_path
         end
     end
