@@ -4,7 +4,7 @@ class CreateSeasons < ActiveRecord::Migration[6.0]
       t.integer :show_id
       t.string :name
       t.integer :episode_count
-      t.string :poster_path, default :null
+      t.string :poster_path
       t.string :overview
 
       t.timestamps

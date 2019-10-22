@@ -10,12 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_10_21_162505) do
+ActiveRecord::Schema.define(version: 2019_10_21_182237) do
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "episode_id"
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer "followee_id"
     t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "show_id"
+    t.float "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "show_id"
+    t.string "name"
+    t.integer "episode_count"
+    t.string "poster_path"
+    t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,20 +62,27 @@ ActiveRecord::Schema.define(version: 2019_10_21_162505) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "views", force: :cascade do |t|
+  create_table "user_achievements", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "show_id"
-=======
-ActiveRecord::Schema.define(version: 2019_10_21_145554) do
+    t.integer "achievement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
-    t.string "password"
+    t.string "password_digest"
     t.string "phone_number"
->>>>>>> 265a1dbe220d79fb886126bb08b52edbd4a8f299
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "show_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

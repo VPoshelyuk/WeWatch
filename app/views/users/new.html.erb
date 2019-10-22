@@ -1,17 +1,19 @@
 <h1>Create Account</h1>
 
-<%= form_with model: @user do |f| %>
-    <%= f.label :user_name, 'User Name: '%>
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+    <%= f.label :user_name%>
     <%= f.text_field :user_name %><br/>
-    <%= f.label :first_name, 'First Name: '%>
+    <%= f.label :first_name%>
     <%= f.text_field :first_name %><br/>
-    <%= f.label :last_name, 'Last Name: '%>
+    <%= f.label :last_name%>
     <%= f.text_field :last_name %><br/>
-    <%= f.label :age, 'Age: '%>
+    <%= f.label :age%>
     <%= f.text_field :age %><br/>
-    <%= f.label :password, 'Password: '%>
-    <%= f.text_field :password %><br/>
-    <%= f.label :phone_number, 'Phone Number: '%>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br/>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br/>
+    <%= f.label :phone_number%>
     <%= f.text_field :phone_number %><br/>
 
     <%= f.submit "Create Account" %>

@@ -11,11 +11,13 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
         if @user.save
+            byebug
             flash[:notice] = "Your Account Has Been Created Successfully!"
+            session[:user_id] = @user.id
             redirect_to user_path
         else
+            byebug
             flash[:notice] = "Please Try Again"
             redirect_to new_user_path
         end
@@ -53,6 +55,7 @@ class UsersController < ApplicationController
             :last_name,
             :age,
             :password,
+            :password_confirmation,
             :phone_number
         )
     end 
