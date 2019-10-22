@@ -1,7 +1,20 @@
 <h1>Create Account</h1>
 
+<<<<<<< HEAD
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
     <%= f.label :user_name%>
+=======
+<% if flash[:errors] %>
+  <ul>
+  <% flash[:errors].each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @user do |f| %>
+    <%= f.label :user_name, 'User Name: '%>
+>>>>>>> refs/remotes/origin/master
     <%= f.text_field :user_name %><br/>
     <%= f.label :first_name%>
     <%= f.text_field :first_name %><br/>
