@@ -61,11 +61,9 @@ ActiveRecord::Schema.define(version: 2019_10_22_152244) do
 
   create_table "shows", force: :cascade do |t|
     t.string "name"
-    t.string "network_name"
-    t.integer "num_of_episodes"
+    t.string "overview"
     t.integer "num_of_seasons"
     t.integer "vote_avg"
-    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

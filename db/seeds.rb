@@ -9,28 +9,79 @@
 require 'open-uri'
 require 'json'
 
-Show.delete_all
-# Seasons.delete_all
-# Episodes.delete_all
+# Show.delete_all
+# Season.delete_all
+# Episode.delete_all
+# 40.times do |i|
+#     open("https://api.themoviedb.org/3/tv/popular?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US&page=#{i+1}") do |publications|
+#         data = []
+#         publications.read.each_line do |publication|
+#             @item = JSON.parse(publication)
+#             @item["results"].each do |result|
+#                 object = {
+#                     "id": result["id"],
+#                     "name": result["name"],
+#                     "vote_avg": result["vote_average"],
+#                     "overview": result["overview"]
+#                 }
+#                 data << object
+#             end
+#         end
+#         Show.create!(data)
+#     end
+# end
 
-40.times do |i|
-    open("https://api.themoviedb.org/3/tv/popular?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US&page=#{i+1}") do |publications|
-        data = []
+Show.all.each do |show|
+    open("https://api.themoviedb.org/3/tv/#{show.id}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
         publications.read.each_line do |publication|
-            @item = JSON.parse(publication["results"])
-            object = {
-                "id": @item["id"],
-                "name": @item["name"],
-                "network_name": @item["networks"][0]["name"],
-                "num_of_episodes": @item["number_of_episodes"],
-                "num_of_seasons": @item["number_of_seasons"],
-                "vote_avg": @item["vote_average"],
-                "status": @item["status"],
-
-            }
-            data << object
+            @item = JSON.parse(publication)
+            show.update(num_of_seasons: @item["number_of_seasons"])
         end
-        Show.create!(data)
     end
 end
+
+# Show.all.limit(1).each do |show|
+#     iter_times = show.num_of_seasons
+#     iter_times.times do |season|
+#         open("https://api.themoviedb.org/3/tv/#{show.id}/season/#{season}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+#             data = []
+#             publications.read.each_line do |publication|
+#                 @item = JSON.parse(publication)
+#                 object = {
+#                     "id": @item["id"],
+#                     "show_id": show.id,
+#                     "name": @item["name"],
+#                     "episode_count": @item["episodes"].count,
+#                     "poster_path": @item["poster_path"],
+#                     "overview": @item["overview"]
+
+#                 }
+#                 data << object
+#             end
+#             Season.create!(data)
+#         end
+#     end
+# end
+
+# Season.all.limit(1).each do |season|
+#     season.num_of_episodes.times do |episode|
+#         open("https://api.themoviedb.org/3/tv/#{season.show_id}/season/#{season.id}/episode/#{episode}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+#             data = []
+#             publications.read.each_line do |publication|
+#                 @item = JSON.parse(publication)
+#                 object = {
+#                     "id": @item["id"],
+#                     "show_id": show.id,
+#                     "name": @item["name"],
+#                     "episode_count": @item["episodes"].count,
+#                     "poster_path": @item["poster_path"],
+#                     "overview": @item["overview"]
+
+#                 }
+#                 data << object
+#             end
+#             Episode.create!(data)
+#         end
+#     end
+# end
 
