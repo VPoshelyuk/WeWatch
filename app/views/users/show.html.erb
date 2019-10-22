@@ -1,9 +1,9 @@
-<h1>Profile</h1>
-
 <% if flash[:notice]%>
   <p><%= flash[:notice]%></p>
 <% end%>
+<h1>Profile</h1>
 
+<p>Hello, <%= @user.user_name %></p>
 
 
 

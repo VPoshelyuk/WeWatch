@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     end
   
     def create
-      user = User.find_by(name: params[:user][:user_name])
+      user = User.find_by(user_name: params[:user][:user_name])
   
       user = user.try(:authenticate, params[:user][:password])
   
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   
       @user = user
   
-      redirect_to controller: 'users', action: 'show'
+      redirect_to user_path(@user)
     end
   
     def destroy

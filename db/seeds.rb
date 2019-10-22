@@ -14,10 +14,10 @@ Show.delete_all
 # Episodes.delete_all
 
 40.times do |i|
-    open("https://api.themoviedb.org/3/tv/#{i+100}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+    open("https://api.themoviedb.org/3/tv/popular?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US&page=#{i+1}") do |publications|
         data = []
         publications.read.each_line do |publication|
-            @item = JSON.parse(publication)
+            @item = JSON.parse(publication["results"])
             object = {
                 "id": @item["id"],
                 "name": @item["name"],

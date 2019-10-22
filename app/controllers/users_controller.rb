@@ -12,25 +12,18 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            byebug
             flash[:notice] = "Your Account Has Been Created Successfully!"
-<<<<<<< HEAD
             session[:user_id] = @user.id
-            redirect_to user_path
-=======
             redirect_to user_path(@user)
->>>>>>> refs/remotes/origin/master
         else
-            byebug
             flash[:notice] = "Please Try Again"
             flash[:errors] = @user.errors.full_messages
             redirect_to new_user_path
         end
     end
 
-    def signin
-        redirect_to user_path(@user)
-    end 
+    def show
+    end
 
     def edit
     end
