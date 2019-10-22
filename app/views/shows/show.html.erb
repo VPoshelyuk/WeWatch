@@ -1,0 +1,13 @@
+  <h1><%= @show.name%></h1>
+  <p><%= @show.overview %></p>
+    <p>Number of seasons: <%= @show.num_of_seasons %></p>
+    <p>Rating: <%= @show.vote_avg %></p>
+
+<% @seasons.each do |season| %>
+    <li><%= link_to season.name, season_path(season) %></li>
+    <p>Number of episodes: <%= season.episode_count %></p>
+    <% season.episodes.each do |episode| %>
+        <p><%= link_to episode.name, episode_path(episode) %></p>
+    <% end %>
+<% end %>
+</ul>

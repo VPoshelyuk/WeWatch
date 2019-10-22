@@ -1,0 +1,9 @@
+<h1>Welcome to WeWatch</h1>
+<ul>
+<% @shows.each do |show| %>
+    <li><%= link_to show.name, show_path(show) %></li>
+    <p>Number of seasons: <%= show.num_of_seasons %></p>
+    <p>Rating: <%= show.vote_avg %></p>
+<% end %>
+</ul>
+<p>New User? <%= link_to "Sign Up Here", new_user_path %><p>

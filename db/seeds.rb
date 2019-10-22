@@ -31,14 +31,14 @@ require 'json'
 #     end
 # end
 
-Show.all.each do |show|
-    open("https://api.themoviedb.org/3/tv/#{show.id}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
-        publications.read.each_line do |publication|
-            @item = JSON.parse(publication)
-            show.update(num_of_seasons: @item["number_of_seasons"])
-        end
-    end
-end
+# Show.all.limit(40).each do |show|
+#     open("https://api.themoviedb.org/3/tv/#{show.id}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+#         publications.read.each_line do |publication|
+#             @item = JSON.parse(publication)
+#             show.update(num_of_seasons: @item["number_of_seasons"])
+#         end
+#     end
+# end
 
 # Show.all.limit(1).each do |show|
 #     iter_times = show.num_of_seasons
@@ -63,25 +63,24 @@ end
 #     end
 # end
 
-# Season.all.limit(1).each do |season|
-#     season.num_of_episodes.times do |episode|
-#         open("https://api.themoviedb.org/3/tv/#{season.show_id}/season/#{season.id}/episode/#{episode}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
-#             data = []
-#             publications.read.each_line do |publication|
-#                 @item = JSON.parse(publication)
-#                 object = {
-#                     "id": @item["id"],
-#                     "show_id": show.id,
-#                     "name": @item["name"],
-#                     "episode_count": @item["episodes"].count,
-#                     "poster_path": @item["poster_path"],
-#                     "overview": @item["overview"]
+Season.all.limit(1).each do |season|
+    season.episode_count.times do |episode|
+        open("https://api.themoviedb.org/3/tv/#{season.show_id}/season/1/episode/#{episode+1}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+            data = []
+            publications.read.each_line do |publication|
+                @item = JSON.parse(publication)
+                object = {
+                    "id": @item["id"],
+                    "season_id": season.id,
+                    "name": @item["name"],
+                    "air_date": @item["air_date"],
+                    "overview": @item["overview"]
 
-#                 }
-#                 data << object
-#             end
-#             Episode.create!(data)
-#         end
-#     end
-# end
+                }
+                data << object
+            end
+            Episode.create!(data)
+        end
+    end
+end
 

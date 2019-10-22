@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   resources :comments
   resources :ratings
-  resources :seasons
   resources :achievements
   resources :user_achievements
-  resources :follows
+  resources :users, only: [:show, :edit, :create, :update, :destroy]
+  get '/signup', to: 'users#new', as: 'signup'
   resources :views
   resources :shows
-  resources :users
+  resources :seasons
+  resources :episodes
+  resources :follows
 
 
   get '/login' => 'sessions#new'
