@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_182237) do
+ActiveRecord::Schema.define(version: 2019_10_22_152244) do
 
   create_table "achievements", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2019_10_21_182237) do
     t.integer "user_id"
     t.integer "episode_id"
     t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.string "name"
+    t.string "overview"
+    t.string "air_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

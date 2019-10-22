@@ -1,2 +1,3 @@
 class UserAchievement < ApplicationRecord
+    
 end
