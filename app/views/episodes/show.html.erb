@@ -1,6 +1,22 @@
   <h1><%= @episode.name%></h1>
   <p>Overview: <%= @episode.overview%></p>
   <p>Air date: <%= @episode.air_date%></p>
+  <% if @views.find_by(user_id: session[:user_id], show_id: @show.id, status: "Watching")%>
+    <%= form_with model: @watch do |f| %>
+        <%= f.label "Watched?" %>
+        <%= f.check_box(:watched)%>
+        <%= f.submit "Confirm" %>
+    <% end %>
+  <% end %>
+
+
+
+
+
+
+
+
+
 
   <h3>Discuss this episode:</h3>
 <% @comments.each do |comment| %>

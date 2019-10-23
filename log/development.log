@@ -18979,3 +18979,1244 @@ Processing by ShowsController#show as HTML
 Completed 200 OK in 151ms (Views: 120.9ms | ActiveRecord: 3.4ms | Allocations: 84450)
 
 
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWatches (20191023033818)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "watches"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20191023033818"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWatches (20191023033818)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "watches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "episode_id" integer, "watched" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191023033818"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:25:47 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.8ms | Allocations: 21558)
+
+
+  
+NoMethodError (undefined method `join' for {:user_id=>1, :episode_id=>742}:Hash):
+  
+app/controllers/episodes_controller.rb:5:in `show'
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:30:54 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:6:in `show'
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 3.0ms | Allocations: 36661)
+
+
+  
+NoMethodError (undefined method `join' for {:user_id=>1, :show_id=>36, :status=>"Watching"}:Hash):
+  
+app/controllers/episodes_controller.rb:6:in `show'
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:33:13 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (0.3ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 742], ["created_at", "2019-10-23 04:33:14.004816"], ["updated_at", "2019-10-23 04:33:14.004816"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  Rendered episodes/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 4270)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 5.6ms | Allocations: 49348)
+
+
+  
+ActionView::Template::Error (undefined method `join' for {:user_id=>1, :show_id=>36, :status=>"Watching"}:Hash):
+    1:   <h1><%= @episode.name%></h1>
+    2:   <p>Overview: <%= @episode.overview%></p>
+    3:   <p>Air date: <%= @episode.air_date%></p>
+    4:   <% if @views.find(user_id: session[:user_id], show_id: @show.id, status: "Watching")%>
+    5:     <%= form_with model: @watch do |f| %>
+    6:         <%= f.label "Watched?" %>
+    7:         <%= f.check_box(:watched)%>
+  
+app/views/episodes/show.html.erb:4
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:19 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:21 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:21 -0400
+  [1m[36mView Load (0.4ms)[0m  [1m[34mSELECT "views".* FROM "views" LIMIT ?[0m  [["LIMIT", 11]]
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:46 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:49 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:34:50 -0400
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" ORDER BY "views"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:35:03 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:35:05 -0400
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" LIMIT ?[0m  [["LIMIT", 11]]
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:35:18 -0400
+Started PUT "/__web_console/repl_sessions/a8c36d9de4c7b5fa4a135b19e1f50b95" for ::1 at 2019-10-23 00:35:31 -0400
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:35:48 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 11348)
+Completed 200 OK in 50ms (Views: 40.6ms | ActiveRecord: 1.9ms | Allocations: 27170)
+
+
+Started PATCH "/watches/1" for ::1 at 2019-10-23 00:35:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"hu4cDcGkBO3C6jJSlh2pCtOVL/N0MYRzZMQAkmfMHNzr8YzEarndb07jzEygrE+4029PViX4mtJHKoFcDR7hgw==", "watch"=>{"watched"=>"1"}, "commit"=>"Save Information", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:16:in `update'
+  [1m[36mWatch Destroy (1.3ms)[0m  [1m[31mDELETE FROM "watches" WHERE "watches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/watches_controller.rb:17:in `update'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.5ms | Allocations: 2220)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:18:in `update'
+Started GET "/shows/36" for ::1 at 2019-10-23 00:36:32 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.3ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 44.1ms | Allocations: 28702)
+Completed 200 OK in 90ms (Views: 81.9ms | ActiveRecord: 1.8ms | Allocations: 44596)
+
+
+Started GET "/shows/45" for ::1 at 2019-10-23 00:36:35 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 45]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 45]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1073)
+Completed 200 OK in 21ms (Views: 13.6ms | ActiveRecord: 1.0ms | Allocations: 14904)
+
+
+Started PATCH "/views/1" for ::1 at 2019-10-23 00:36:41 -0400
+Processing by ViewsController#update as JS
+  Parameters: {"authenticity_token"=>"/g7ml2eq+eZ5UuYudjc3/E2xAnKvsqzNwjFcazhifI2TEXZezLcgZPVbGDBAhtFOTUti1/57smzh392lUrCB0g==", "view"=>{"status"=>"Stopped Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:16:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mView Update (0.3ms)[0m  [1m[33mUPDATE "views" SET "status" = ?, "updated_at" = ? WHERE "views"."id" = ?[0m  [["status", "Stopped Watching"], ["updated_at", "2019-10-23 04:36:41.598945"], ["id", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 10ms (ActiveRecord: 1.5ms | Allocations: 6654)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 00:36:41 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (1.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 79.7ms | Allocations: 26435)
+Completed 200 OK in 103ms (Views: 95.3ms | ActiveRecord: 2.5ms | Allocations: 46077)
+
+
+Started GET "/episodes/744" for ::1 at 2019-10-23 00:36:43 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"744"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (0.7ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 744], ["created_at", "2019-10-23 04:36:43.291653"], ["updated_at", "2019-10-23 04:36:43.291653"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 744]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2369)
+Completed 200 OK in 49ms (Views: 23.9ms | ActiveRecord: 4.9ms | Allocations: 22227)
+
+
+Started PATCH "/views/1" for ::1 at 2019-10-23 00:36:49 -0400
+Processing by ViewsController#update as JS
+  Parameters: {"authenticity_token"=>"lIflzxC4KQVomvfMp827YTzAazrt/2jTD0IeIm/IGFdaOV2kWsn7o8BimdT8UN0y4ulaYl/xw74j+pZWPGig1Q==", "view"=>{"status"=>"Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:16:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mView Update (0.3ms)[0m  [1m[33mUPDATE "views" SET "status" = ?, "updated_at" = ? WHERE "views"."id" = ?[0m  [["status", "Watching"], ["updated_at", "2019-10-23 04:36:49.800268"], ["id", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 10ms (ActiveRecord: 3.1ms | Allocations: 5650)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 00:36:49 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 31.8ms | Allocations: 26437)
+Completed 200 OK in 53ms (Views: 40.7ms | ActiveRecord: 2.0ms | Allocations: 43419)
+
+
+Started GET "/episodes/744" for ::1 at 2019-10-23 00:36:51 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"744"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 744]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 6.7ms | Allocations: 2297)
+Completed 200 OK in 37ms (Views: 24.4ms | ActiveRecord: 1.1ms | Allocations: 17407)
+
+
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:49 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:38:50.079324"], ["id", 2]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.8ms | Allocations: 28169)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:51 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:51 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.7ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:53 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:38:53 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 5139)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/2" for ::1 at 2019-10-23 00:39:01 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"3XaqblP8sJXgORchTVnZQEfNCLRdqKmiN6/K1MwCj0+k4wahMqsoghRGfEViJwbZqr+yvsNKd/G5GfcBbI5L9A==", "watch"=>{"watched"=>"0"}, "commit"=>"Confirm", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 0], ["updated_at", "2019-10-23 04:39:01.507572"], ["id", 2]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 3.2ms | Allocations: 5929)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:39:12 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.9ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.3ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (0.3ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 742], ["created_at", "2019-10-23 04:39:12.739168"], ["updated_at", "2019-10-23 04:39:12.739168"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 18.0ms | Allocations: 14987)
+Completed 200 OK in 74ms (Views: 25.9ms | ActiveRecord: 6.4ms | Allocations: 49326)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:39:16 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"2qpjJQ6Xo3txgBh44chRBjmWHZI0VgC5vJ88JLBp4eP8TCPqmd7F9CG6EH4f1ICv78mxzXWWyMnCar2GKJQyNg==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:39:16.097629"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.6ms | Allocations: 5930)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:40:34 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"2qpjJQ6Xo3txgBh44chRBjmWHZI0VgC5vJ88JLBp4eP8TCPqmd7F9CG6EH4f1ICv78mxzXWWyMnCar2GKJQyNg==", "watch"=>{"watched"=>"0"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 0], ["updated_at", "2019-10-23 04:40:34.838933"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 3.2ms | Allocations: 28168)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"episodes", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/watches_controller.rb:9:in `update'
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:08 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"2qpjJQ6Xo3txgBh44chRBjmWHZI0VgC5vJ88JLBp4eP8TCPqmd7F9CG6EH4f1ICv78mxzXWWyMnCar2GKJQyNg==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:41:08.953492"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 30ms (ActiveRecord: 2.8ms | Allocations: 28329)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:41:11 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 52.0ms | Allocations: 14974)
+Completed 200 OK in 96ms (Views: 60.4ms | ActiveRecord: 3.5ms | Allocations: 44908)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:41:13 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 5629)
+Completed 200 OK in 39ms (Views: 29.5ms | ActiveRecord: 1.2ms | Allocations: 20736)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 00:41:16 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.4ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.4ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 39.0ms | Allocations: 28125)
+Completed 200 OK in 61ms (Views: 53.3ms | ActiveRecord: 2.2ms | Allocations: 43491)
+
+
+Started GET "/episodes/747" for ::1 at 2019-10-23 00:41:17 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"747"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (3.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (0.6ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 747], ["created_at", "2019-10-23 04:41:17.615374"], ["updated_at", "2019-10-23 04:41:17.615374"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 747]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2287)
+Completed 200 OK in 63ms (Views: 33.2ms | ActiveRecord: 9.4ms | Allocations: 21761)
+
+
+Started PATCH "/watches/4" for ::1 at 2019-10-23 00:41:20 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"nGzjq8lxQNSfCBI+JwZ6aUpBt1RB884xTogE62x9qfmmGI1DFtGMRTIRfnDnmnZ2+/lI+TumvcWk0vYk5sXJ7A==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (2.0ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:41:20.421349"], ["id", 4]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 16ms (ActiveRecord: 5.0ms | Allocations: 5555)
+
+
+Started GET "/episodes/746" for ::1 at 2019-10-23 00:41:25 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"746"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 746], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 746], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 746], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (1.8ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 746], ["created_at", "2019-10-23 04:41:25.168042"], ["updated_at", "2019-10-23 04:41:25.168042"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 746]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2288)
+Completed 200 OK in 55ms (Views: 30.0ms | ActiveRecord: 8.4ms | Allocations: 21759)
+
+
+Started PATCH "/watches/5" for ::1 at 2019-10-23 00:41:27 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"z8uafQMMR62jOi95KanmnjHIBcQrzNwv+l8FjElJi6VUJn+tsPgrBRZYH95GC7jnEfzg2IUcsU4GEFqmIBAqng==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 746], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.8ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:41:27.649373"], ["id", 5]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 19ms (ActiveRecord: 4.4ms | Allocations: 5551)
+
+
+Started GET "/episodes/747" for ::1 at 2019-10-23 00:41:30 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"747"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (1.4ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 747]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 2297)
+Completed 200 OK in 49ms (Views: 38.7ms | ActiveRecord: 2.5ms | Allocations: 17401)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:41:33 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5629)
+Completed 200 OK in 59ms (Views: 46.1ms | ActiveRecord: 1.4ms | Allocations: 20743)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:36 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"aaIUTOHCYrfC8ICNV086UQOxUcl5UuAI6KsYVzR+9dJPRFSDdosEOJLKiIupU+v41e79ljiSKHiWXpn1rIMmBw==", "watch"=>{"watched"=>"0"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.5ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 0], ["updated_at", "2019-10-23 04:41:36.698803"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 16ms (ActiveRecord: 3.3ms | Allocations: 5554)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:41:39 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.4ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 19.1ms | Allocations: 5628)
+Completed 200 OK in 59ms (Views: 48.0ms | ActiveRecord: 1.7ms | Allocations: 20738)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:45 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:41:45.916876"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 10ms (ActiveRecord: 3.1ms | Allocations: 5559)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:49 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 0.7ms | Allocations: 4766)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:50 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 0.7ms | Allocations: 4766)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:50 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 0.4ms | Allocations: 4761)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:52 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"0"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.4ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 0], ["updated_at", "2019-10-23 04:41:52.110513"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 47ms (ActiveRecord: 2.8ms | Allocations: 5550)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:41:59 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"mdfOSKvGOMfmt3lqzC5DMOobnkUXQXbsRc4IKnYNzeS/MY6HPI9eSLaNcWwyMpKZPEQyGlaBvpw7O4mI7vAeMQ==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 04:41:59.771875"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 12ms (ActiveRecord: 3.9ms | Allocations: 5557)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:42:02 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 9.9ms | Allocations: 5629)
+Completed 200 OK in 34ms (Views: 26.3ms | ActiveRecord: 1.1ms | Allocations: 20740)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 00:42:04 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"zLoJlYwfFe+3l/CdWLiX2O9zVSVME+69I6kRAB3jXBWhpZlcJwLMbTueDoNuCXFq74k1gB3a8BwAR5DOdzGhSg==", "watch"=>{"watched"=>"0"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (0.3ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 0], ["updated_at", "2019-10-23 04:42:04.586829"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 12ms (ActiveRecord: 3.1ms | Allocations: 5533)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 00:42:05 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 5628)
+Completed 200 OK in 30ms (Views: 21.8ms | ActiveRecord: 0.9ms | Allocations: 20742)
+
+
