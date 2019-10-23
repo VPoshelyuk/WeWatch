@@ -4,15 +4,14 @@
 <h1>Profile</h1>
 
 <p>Hello, <%= @user.user_name %></p>
-
+<p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+<p>Phone Number: <%= @user.phone_number %>
+<p>Age: <%= @user.age %>
 
 
 <% if @user.id == session[:user_id]%>
   <%= button_to "Edit Account Information", {action: "edit", controller: "users", id: @user.id}, method: "get"%>
    
-  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-    <input type=submit value='Log Out'>
-  <% end %>
 <% end %>
 
-<%= link_to "Home Page", users_path%>
+<%= link_to "Home Page", shows_path%>

@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         @user.update(user_params)
 
         if @user.save
-            flash[:notice] = "Your Account Has Been Created Successfully!"
+            flash[:notice] = "Your Information Has Been Saved!"
             redirect_to user_path
         else
             flash[:notice] = "Please Try Again"
