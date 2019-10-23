@@ -15,14 +15,8 @@
 
 
     <% if @view.status == "Watching" || @view.status == "Stopped Watching" %>
-        <%= form_with model: @watch do |f| %>
-            <%= f.collection_check_boxes(:episode_ids, season.episodes, :id, :name, selected: @show.views.map{|view| view.episodes_watched if view.user_id == session[:user_id]} )  do |b| %>
-            <span>
-                <%= b.check_box %>
-                <%= link_to b.label, episode_path(b.value) %><br>
-            </span>   
-            <% end %>
-            <%= f.submit "Save Information" %>
+        <% season.episodes.each do |episode| %>
+            <p><%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
         <% end %>
     <% else%>
         <% season.episodes.each do |episode| %>

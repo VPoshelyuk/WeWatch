@@ -14,7 +14,7 @@ class ShowsController < ApplicationController
         end
 
         
-        
+        @watches = Watch.all.where(user_id: session[:user_id],watched: true)
         @seasons = @show.seasons
     end
 

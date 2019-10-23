@@ -4,9 +4,25 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(comment_params)
-        redirect_to episode_path(params[:comment][:episode_id])
+        if params[:comment][:comment] != ""
+            @comment = Comment.create(comment_params) 
+            redirect_to episode_path(params[:comment][:episode_id])
+        end
     end
+
+    def edit
+        @comment = Comment.find(params[:id])
+    end
+
+    def update
+        if params[:comment][:comment] != ""
+            @comment = Comment.find(params[:id])
+            @comment.update(comment_params) 
+            @episode = @comment.episode
+            redirect_to episode_path(@episode)
+        end
+    end
+
 
     private
 
