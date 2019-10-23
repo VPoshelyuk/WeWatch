@@ -20220,3 +20220,956 @@ Processing by EpisodesController#show as HTML
 Completed 200 OK in 30ms (Views: 21.8ms | ActiveRecord: 0.9ms | Allocations: 20742)
 
 
+Started PATCH "/watches/3" for ::1 at 2019-10-23 08:57:01 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"ZriQXV9AWZ0QBJMme6o16FSKamwm7ZzLKnwxOFuDit8LpwCU9F2AH5wNbThNG9NaVHAKyXckgmoJkrD2MVF3gA==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (1.5ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mWatch Update (1.4ms)[0m  [1m[33mUPDATE "watches" SET "watched" = ?, "updated_at" = ? WHERE "watches"."id" = ?[0m  [["watched", 1], ["updated_at", "2019-10-23 12:57:01.566996"], ["id", 3]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 32ms (ActiveRecord: 4.9ms | Allocations: 5592)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 08:57:03 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (4.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (1.7ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.8ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (1.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 104.4ms | Allocations: 26458)
+Completed 200 OK in 186ms (Views: 166.8ms | ActiveRecord: 9.0ms | Allocations: 40353)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 08:57:11 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.3ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (1.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.6ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 22.7ms | Allocations: 5665)
+Completed 200 OK in 51ms (Views: 35.8ms | ActiveRecord: 3.7ms | Allocations: 20814)
+
+
+Started GET "/seasons/33" for ::1 at 2019-10-23 08:57:47 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for SeasonsController):
+  
+actionpack (6.0.0) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.0) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.0) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.0) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/shows/36" for ::1 at 2019-10-23 08:57:49 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.8ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.5ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 122.4ms | Allocations: 26419)
+Completed 200 OK in 138ms (Views: 130.9ms | ActiveRecord: 2.5ms | Allocations: 40171)
+
+
+Started GET "/seasons/34" for ::1 at 2019-10-23 08:57:52 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for SeasonsController):
+  
+actionpack (6.0.0) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.0) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.0) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.0) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/shows/36" for ::1 at 2019-10-23 08:57:54 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 21.1ms | Allocations: 26417)
+Completed 200 OK in 40ms (Views: 32.3ms | ActiveRecord: 1.9ms | Allocations: 40173)
+
+
+Started GET "/seasons/33" for ::1 at 2019-10-23 08:57:56 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for SeasonsController):
+  
+actionpack (6.0.0) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.0) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.0) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.0) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/shows/36" for ::1 at 2019-10-23 08:57:58 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 55.1ms | Allocations: 26420)
+Completed 200 OK in 70ms (Views: 65.2ms | ActiveRecord: 1.2ms | Allocations: 40172)
+
+
+Started POST "/shows/36" for ::1 at 2019-10-23 08:58:02 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/shows/36"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/seasons/40" for ::1 at 2019-10-23 08:58:04 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for SeasonsController):
+  
+actionpack (6.0.0) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.0) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.0) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.0) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/shows/36" for ::1 at 2019-10-23 08:58:06 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 23.7ms | Allocations: 26417)
+Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 1.6ms | Allocations: 40179)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 09:12:09 -0400
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 85.0ms | Allocations: 43169)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/slavaP/Desktop/labs/MOD2/Rails/Final_Project/WeWatch/public/packs
+Completed 200 OK in 6857ms (Views: 6727.4ms | ActiveRecord: 4.6ms | Allocations: 1493039)
+
+
+Started PATCH "/views/1" for ::1 at 2019-10-23 09:15:16 -0400
+Processing by ViewsController#update as JS
+  Parameters: {"authenticity_token"=>"2I3+kLirCx8uWL7IqgzNdzdmc/SfRhzRYUi3zzn1KHu1km5ZE7bSnaJRQNacvSvFN5wTUc6PAnBCpjYBUyfVJA==", "view"=>{"status"=>"Not Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:16:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mView Update (0.4ms)[0m  [1m[33mUPDATE "views" SET "status" = ?, "updated_at" = ? WHERE "views"."id" = ?[0m  [["status", "Not Watching"], ["updated_at", "2019-10-23 13:15:16.426576"], ["id", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 12ms (ActiveRecord: 1.7ms | Allocations: 6874)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 09:15:16 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (1.0ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.8ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:28
+  Rendered shows/show.html.erb within layouts/application (Duration: 20.7ms | Allocations: 6761)
+Completed 200 OK in 40ms (Views: 31.5ms | ActiveRecord: 3.1ms | Allocations: 19784)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 09:16:07 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.3ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 18.1ms | Allocations: 11975)
+Completed 200 OK in 108ms (Views: 58.9ms | ActiveRecord: 2.5ms | Allocations: 32458)
+
+
+Started GET "/episodes/744" for ::1 at 2019-10-23 09:16:13 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"744"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 744], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 744]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1860)
+Completed 200 OK in 26ms (Views: 18.2ms | ActiveRecord: 1.1ms | Allocations: 16132)
+
+
+Started GET "/login" for ::1 at 2019-10-23 09:16:25 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1087)
+Completed 200 OK in 48ms (Views: 44.4ms | ActiveRecord: 0.2ms | Allocations: 13227)
+
+
+Started POST "/login" for ::1 at 2019-10-23 09:16:26 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"WqYx6LSTbSdvu2zs1rhI2/0wVTCgekagaDL9oubFvwA3uaEhH460peOykvLgCa5p/co1lfGzWAFL3HxsjBdCXw==", "user"=>{"user_name"=>"Slava", "password"=>"[FILTERED]"}, "commit"=>"log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "Slava"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 204ms (ActiveRecord: 0.5ms | Allocations: 1528)
+
+
+Started GET "/users/1" for ::1 at 2019-10-23 09:16:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 620)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.2ms | Allocations: 13467)
+
+
+Started GET "/shows" for ::1 at 2019-10-23 09:16:35 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 48.3ms | Allocations: 33812)
+Completed 200 OK in 63ms (Views: 54.6ms | ActiveRecord: 5.1ms | Allocations: 45753)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 09:16:37 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.5ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:28
+  Rendered shows/show.html.erb within layouts/application (Duration: 15.1ms | Allocations: 6756)
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 1.7ms | Allocations: 19739)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 09:16:38 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 11.6ms | Allocations: 5201)
+Completed 200 OK in 34ms (Views: 22.2ms | ActiveRecord: 1.3ms | Allocations: 19451)
+
+
+Started PATCH "/views/1" for ::1 at 2019-10-23 09:17:01 -0400
+Processing by ViewsController#update as JS
+  Parameters: {"authenticity_token"=>"sfYZ1aCOQFb4WNMuxC/k+b0KLwNf9VaBbq7MBiZ1s6F/SKG+6v+S8FCgvTafsoKqYyMeW+37/exCFkRyddULIw==", "view"=>{"status"=>"Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:16:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mView Update (0.3ms)[0m  [1m[33mUPDATE "views" SET "status" = ?, "updated_at" = ? WHERE "views"."id" = ?[0m  [["status", "Watching"], ["updated_at", "2019-10-23 13:17:01.828858"], ["id", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 11ms (ActiveRecord: 3.6ms | Allocations: 5651)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 09:17:01 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:19
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:19
+  Rendered shows/show.html.erb within layouts/application (Duration: 32.0ms | Allocations: 26422)
+Completed 200 OK in 50ms (Views: 42.7ms | ActiveRecord: 1.6ms | Allocations: 39314)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 09:17:12 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.5ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 37.1ms | Allocations: 5719)
+Completed 200 OK in 57ms (Views: 47.3ms | ActiveRecord: 1.6ms | Allocations: 19972)
+
+
+Started PATCH "/watches/3" for ::1 at 2019-10-23 09:17:15 -0400
+Processing by WatchesController#update as JS
+  Parameters: {"authenticity_token"=>"Yhto0xrwclk6vKb+K0snpAJYyfAwGWOU5tlUCNNIgPZE/SgcjbkU1mqGrvjVV/YN1Adlr3HZq+SYLNWqS7VTIw==", "watch"=>{"watched"=>"1"}, "commit"=>"Confirm", "id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:7:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/watches_controller.rb:8:in `update'
+No template found for WatchesController#update, rendering head :no_content
+Completed 204 No Content in 10ms (ActiveRecord: 0.5ms | Allocations: 6751)
+
+
+Started GET "/episodes/747" for ::1 at 2019-10-23 09:17:17 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"747"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.3ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.2ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 747], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 747]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2297)
+Completed 200 OK in 36ms (Views: 25.4ms | ActiveRecord: 2.8ms | Allocations: 16550)
+
+
+Started GET "/episodes/745" for ::1 at 2019-10-23 09:17:20 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"745"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 745], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.3ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 745], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 745], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[36mWatch Create (0.6ms)[0m  [1m[32mINSERT INTO "watches" ("user_id", "episode_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["episode_id", 745], ["created_at", "2019-10-23 13:17:20.583604"], ["updated_at", "2019-10-23 13:17:20.583604"]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.5ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 745]]
+  ↳ app/views/episodes/show.html.erb:22
+  Rendered episodes/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2289)
+Completed 200 OK in 43ms (Views: 19.3ms | ActiveRecord: 4.9ms | Allocations: 21000)
+
+
+Started PATCH "/views/1" for ::1 at 2019-10-23 09:17:33 -0400
+Processing by ViewsController#update as JS
+  Parameters: {"authenticity_token"=>"UTCPG2GOqt7UxvrI0skG5Holgsl+PG9wPHnrHedoStCfjjdwK/94eHw+lNCJVGC3pAyzkcwyxB0QwWNptMjyUg==", "view"=>{"status"=>"Not Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:16:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[36mView Update (0.3ms)[0m  [1m[33mUPDATE "views" SET "status" = ?, "updated_at" = ? WHERE "views"."id" = ?[0m  [["status", "Not Watching"], ["updated_at", "2019-10-23 13:17:33.555157"], ["id", 1]]
+  ↳ app/controllers/views_controller.rb:17:in `update'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:17:in `update'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 10ms (ActiveRecord: 3.2ms | Allocations: 5651)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-23 09:17:33 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:7:in `show'
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:8:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 33]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 34]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 35]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 36]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 37]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 38]]
+  ↳ app/views/shows/show.html.erb:28
+  [1m[36mEpisode Load (0.1ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."season_id" = ?[0m  [["season_id", 40]]
+  ↳ app/views/shows/show.html.erb:28
+  Rendered shows/show.html.erb within layouts/application (Duration: 18.0ms | Allocations: 6751)
+Completed 200 OK in 35ms (Views: 26.7ms | ActiveRecord: 2.0ms | Allocations: 19734)
+
+
+Started GET "/episodes/742" for ::1 at 2019-10-23 09:17:37 -0400
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"742"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mEpisode Load (0.2ms)[0m  [1m[34mSELECT "episodes".* FROM "episodes" WHERE "episodes"."id" = ? LIMIT ?[0m  [["id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:3:in `show'
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:5:in `show'
+  [1m[36mWatch Load (0.1ms)[0m  [1m[34mSELECT "watches".* FROM "watches" WHERE "watches"."user_id" = ? AND "watches"."episode_id" = ? LIMIT ?[0m  [["user_id", 1], ["episode_id", 742], ["LIMIT", 1]]
+  ↳ app/controllers/episodes_controller.rb:7:in `show'
+  Rendering episodes/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? AND "views"."show_id" = ? AND "views"."status" = ? LIMIT ?[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:4
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."episode_id" = ?[0m  [["episode_id", 742]]
+  ↳ app/views/episodes/show.html.erb:22
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/episodes/show.html.erb:23
+  Rendered episodes/show.html.erb within layouts/application (Duration: 17.0ms | Allocations: 5191)
+Completed 200 OK in 36ms (Views: 27.1ms | ActiveRecord: 1.3ms | Allocations: 19437)
+
+
