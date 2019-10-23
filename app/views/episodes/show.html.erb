@@ -4,15 +4,17 @@
 
   <h3>Discuss this episode:</h3>
 <% @comments.each do |comment| %>
-    <h4><%= link_to comment.user.name, user_path(comment.user) %></h4>
+    <h4><%= link_to comment.user.user_name, user_path(comment.user) %></h4>
     <p><%= comment.comment %>
 <% end %>
-
-<%= form_with model: @comment do |f| %>
-    <%= f.label "Your comment:"%>
-    <%= f.text_field :comment %><br/>
-    byebug
-    <%= f.submit "Post it!" %>
+<% if session[:user_id] %>
+    <%= form_with model: Comment.new do |f| %>
+        <%= f.label "Your comment:"%>
+        <%= f.text_field :comment %><br/>
+        <%= f.hidden_field :episode_id, value: "#{params[:id]}" %>
+        <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
+        <%= f.submit "Post it!" %>
+    <% end %>
+<% else %>
+    <h4><%= link_to "Login to leave a comment", login_path %></h4>
 <% end %>
-
-</ul>

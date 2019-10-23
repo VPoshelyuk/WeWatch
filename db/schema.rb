@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_152244) do
+ActiveRecord::Schema.define(version: 2019_10_23_033818) do
 
   create_table "achievements", force: :cascade do |t|
     t.string "name"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 2019_10_22_152244) do
   create_table "views", force: :cascade do |t|
     t.integer "user_id"
     t.integer "show_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "episodes_watched"
+    t.string "status", default: "Not Watching"
+  end
+
+  create_table "watches", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "episode_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

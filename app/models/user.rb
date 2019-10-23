@@ -10,5 +10,7 @@ class User < ApplicationRecord
     has_many :user_achievements
     has_many :achievements, through: :user_achievements
     has_many :comments
+    has_many :watches
+    has_many :episodes, through: :watches
 end
 

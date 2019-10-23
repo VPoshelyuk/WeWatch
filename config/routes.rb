@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :watches
   resources :comments
   resources :ratings
   resources :achievements
