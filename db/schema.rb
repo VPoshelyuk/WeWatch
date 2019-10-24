@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_174211) do
   end
 
   create_table "followings", force: :cascade do |t|
+
     t.integer "user_id"
     t.integer "followed_user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_174211) do
   end
 
   create_table "follows", force: :cascade do |t|
+
     t.integer "user_id"
     t.integer "followed_user_id"
     t.datetime "created_at", precision: 6, null: false

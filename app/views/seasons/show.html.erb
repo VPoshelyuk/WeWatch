@@ -1,3 +1,4 @@
-<% @season.episodes.each do |episode| %>
-    <p><%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
+<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
+<% @episodes.each do |episode| %>
+    <p>Episode <%= episode.episode_number%>: <%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
 <% end %>

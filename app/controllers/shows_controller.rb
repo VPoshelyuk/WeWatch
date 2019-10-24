@@ -2,13 +2,12 @@ class ShowsController < ApplicationController
     def index
         # if user input in params, show filtered results 
         # otherwise show everything 
-        if search_shows != nil
-            @shows = Show.find_by(name: params[:q])
-            # redirect_to shows_path(@shows)
-            render :index
-        else
-            @shows = Show.all.sort_by{ |show| show.created_at }
-        end
+        # byebug
+        @shows = if params[:q] != nil
+                    Show.search_shows(params[:q])
+                 else
+                    Show.all.sort_by{ |show| show.created_at }
+                 end
     end
 
     def show
@@ -20,12 +19,10 @@ class ShowsController < ApplicationController
         else
             @view = View.new
         end
-        @seasons = @show.seasons
+        @seasons = @show.seasons.sort_by{ |show| show.season_number }.reverse
         @image_path  = @show.poster_path
     end
 
-    def search_shows 
-        @shows = Show.find_by(name: params[:q])
-    end 
+   
 end
  

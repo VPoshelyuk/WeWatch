@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :watches
-  resources :comments
+  resources :comments, only: [:edit, :update, :destroy]
   resources :achievements
   resources :user_achievements
-  resources :users, only: [:show, :edit, :create, :update, :destroy]
+  resources :users
   get '/signup', to: 'users#new', as: 'signup'
   resources :views
   resources :shows
