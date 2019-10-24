@@ -10,4 +10,8 @@ class Show < ApplicationRecord
         
     end 
 
+    def self.top_rated
+        Show.all.sort_by{|show| show.vote_avg}.limit(10)
+    end
+
 end

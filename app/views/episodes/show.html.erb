@@ -1,8 +1,5 @@
-
-  
-  
-  
   <h1><%= @episode.name%></h1>
+<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
   <p>Overview: <%= @episode.overview%></p>
   <p>Air date: <%= @episode.air_date%></p>
   <% if @views.find_by(user_id: session[:user_id], show_id: @show.id, status: "Watching")%>
@@ -39,5 +36,3 @@
 <% else %>
     <h4><%= link_to "Login to leave a comment", login_path %></h4>
 <% end %>
-<%= link_to "Back", show_path(@show) %><br/>
-<%= link_to "Home", shows_path %>
