@@ -9,8 +9,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
+  <style>
+
+
+
+
+  </style>
   
-  <body>
+  <body class= "main_body">
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: #cc373c;">
       <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
@@ -44,7 +50,7 @@
       </ul>
       </div>
 </nav>
-      <div class="background-image"> <%= image_tag "background.jpg", :class => "img-fluid" %> </div>
+      <%# <div class="background-image"> <%= image_tag "background.jpg", :class => "img-fluid" %>
 
     <%= yield %>
   </body>
