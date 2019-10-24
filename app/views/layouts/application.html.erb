@@ -13,34 +13,35 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light", style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">WeWatch</a>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: #cc373c;">
+      <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
         <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> %>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <%# <li class="nav-item active"> %>
-            <a class="nav-link" href="<%= shows_path %>"> Home <span class="sr-only">(current)</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-          <%# <li class="nav-item"> %>
             <% if logged_in? %>
-            <%= link_to "Logout", {action: "destroy", controller: 'sessions'}, method: :delete %>
+              <a class="nav-link" href="<%= logout_path %>" data-method="delete">Log Out</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
-            <a class="nav-link" href="<%= login_path %>">Log-in</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" href="<%= signup_path %>">Sign-up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="nav-link" href="<%= login_path %>">Log In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="nav-link" href="<%= signup_path %>">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
           <%# <li class="nav-item"> %>
-            <a class="nav-link" href="<%= shows_path %>">Shows</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <a class="nav-link" href="<%= shows_path %>">Shows</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </ul>
-        <%# <form class="form-inline my-2 my-lg-0">
+        <%# <form class="form-inline my-2 my-lg-0 pull-right">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form> %>
-        <%= form_with(url: shows_path, method: "get") do %>
-          <%= label_tag(:q, "Search for:") %>
+        <ul class="navbar-nav navbar-right">
+          <li>
+          <%= bootstrap_form_tag(url: shows_path, method: "get") do %>
+          <%= label_tag(:q, "Search for Shows:")%>
           <%= text_field_tag(:q) %>
-          <%= submit_tag("Search") %>
+          <%= submit_tag("Search")%>
         <% end %>
+          </li>
+      </ul>
       </div>
 </nav>
 

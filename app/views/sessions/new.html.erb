@@ -1,9 +1,22 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :user_name, 'Username: '%>
-  <%= f.text_field :user_name %>
 
-  <%= f.label :password, 'Password: ' %>
-  <%= f.password_field :password %>
 
-  <%= f.submit "log in" %>
-<% end %>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Log In</h5>
+            <%= bootstrap_form_for @user, url: login_path, method: :post do |f| %>
+              <%= f.text_field :user_name, label: "User Name:" %><br>
+              <%= f.password_field :password, label: "Password:"  %><br>
+              <%= f.submit "Log In" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+

@@ -9,11 +9,13 @@
 require 'open-uri'
 require 'json'
 
+tmdb_api_key = ENV["TMDB_API_KEY"]
+
 # Show.delete_all
 # Season.delete_all
 # Episode.delete_all
 # 40.times do |i|
-#     open("https://api.themoviedb.org/3/tv/popular?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US&page=#{i+1}") do |publications|
+#    open("https://api.themoviedb.org/3/tv/popular?api_key=#{tmdb_api_key}&language=en-US&page=#{i+1}") do |publications|
 #         data = []
 #         publications.read.each_line do |publication|
 #             @item = JSON.parse(publication)
@@ -32,7 +34,7 @@ require 'json'
 # end
 
 # Show.all.limit(40).each do |show|
-#     open("https://api.themoviedb.org/3/tv/#{show.id}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+#     open("https://api.themoviedb.org/3/tv/#{show.id}?api_key=#{tmdb_api_key}&language=en-US") do |publications|
 #         publications.read.each_line do |publication|
 #             @item = JSON.parse(publication)
 #             show.update(num_of_seasons: @item["number_of_seasons"])
@@ -43,7 +45,7 @@ require 'json'
 # Show.all.limit(1).each do |show|
 #     iter_times = show.num_of_seasons
 #     iter_times.times do |season|
-#         open("https://api.themoviedb.org/3/tv/#{show.id}/season/#{season}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+#         open("https://api.themoviedb.org/3/tv/#{show.id}/season/#{season}?api_key=#{tmdb_api_key}&language=en-US") do |publications|
 #             data = []
 #             publications.read.each_line do |publication|
 #                 @item = JSON.parse(publication)
@@ -65,7 +67,7 @@ require 'json'
 
 Season.all.limit(1).each do |season|
     season.episode_count.times do |episode|
-        open("https://api.themoviedb.org/3/tv/#{season.show_id}/season/1/episode/#{episode+1}?api_key=98098f15d568b7706df571a852f1ec4b&language=en-US") do |publications|
+        open("https://api.themoviedb.org/3/tv/#{season.show_id}/season/1/episode/#{episode+1}?api_key=#{tmdb_api_key}&language=en-US") do |publications|
             data = []
             publications.read.each_line do |publication|
                 @item = JSON.parse(publication)

@@ -4,6 +4,7 @@ class CreateShows < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :overview
       t.integer :num_of_seasons
+      t.string :poster_path
       t.integer :vote_avg
 
       t.timestamps
