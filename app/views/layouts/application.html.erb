@@ -14,7 +14,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light", style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">WeWatch</a>
+      <a class="navbar-brand">WeWatch</a>
         <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> %>
@@ -24,7 +24,9 @@
             <a class="nav-link" href="<%= shows_path %>"> Home <span class="sr-only">(current)</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
           <%# <li class="nav-item"> %>
             <% if logged_in? %>
+            <%# <a class="nav-link" href="<%= logout_path %>
             <%= link_to "Logout", {action: "destroy", controller: 'sessions'}, method: :delete %>
+            <a class="nav-link" href="<%= user_path(@user) %>">Account Information</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
             <a class="nav-link" href="<%= login_path %>">Log-in</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="nav-link" href="<%= signup_path %>">Sign-up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

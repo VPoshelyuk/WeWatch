@@ -12,5 +12,12 @@ class User < ApplicationRecord
     has_many :comments
     has_many :watches
     has_many :episodes, through: :watches
+
+    # following
+    has_many :followings
+    has_many :followed_users, through: :followings
+
+    has_many :followers, foreign_key: :followed_user_id, class_name: 'Following'
+    has_many :follower_users, through: :followers, source: :user
 end
 

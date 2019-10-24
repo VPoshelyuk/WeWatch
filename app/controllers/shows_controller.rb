@@ -2,7 +2,13 @@ class ShowsController < ApplicationController
     def index
         # if user input in params, show filtered results 
         # otherwise show everything 
-        @shows = Show.all
+        if search_shows != nil
+            @shows = Show.find_by(name: params[:q])
+            # redirect_to shows_path(@shows)
+            render :index
+        else
+            @shows = Show.all
+        end
     end
 
     def show
@@ -20,7 +26,6 @@ class ShowsController < ApplicationController
 
     def search_shows 
         @shows = Show.find_by(name: params[:q])
-        render :index
     end 
 end
  
