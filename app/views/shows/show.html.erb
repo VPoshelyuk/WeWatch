@@ -1,5 +1,5 @@
   <h1><%= @show.name%></h1>
-    <%= form_with model: @view do |f| %>
+    <%= bootstrap_form_with model: @view do |f| %>
         <%= f.select(:status, ["Not Watching", "Watching", "Going to watch", "Stopped Watching"], selected: @show.views.map{|view| view.status if view.user_id == session[:user_id]} )%>
         <%= f.hidden_field :show_id, value: "#{@show.id}" %>
         <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
@@ -10,7 +10,7 @@
     <p>Rating: <%= @show.vote_avg %></p>
 <ul>
 <% @seasons.each do |season| %>
-    <li><%= link_to season.name, season_path(season) %></li>
+    <li><%= season.name %></li>
     <p>Number of episodes: <%= season.episode_count %></p>
 
 
