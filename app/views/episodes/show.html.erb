@@ -1,5 +1,5 @@
   <h1><%= @episode.name%></h1>
-<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
+<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../../assets/images/no_show_pic.jpg">
   <p>Overview: <%= @episode.overview%></p>
   <p>Air date: <%= @episode.air_date%></p>
   <% if @views.find_by(user_id: session[:user_id], show_id: @show.id, status: "Watching")%>

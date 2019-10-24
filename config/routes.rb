@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :watches
-  resources :comments, only: [:edit, :update, :destroy]
+  resources :comments
   resources :achievements
   resources :user_achievements
   resources :users
