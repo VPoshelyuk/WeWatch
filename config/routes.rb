@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :shows
   resources :seasons, only: [:show]
   resources :episodes
-  resources :follows
+  resources :followings
 
 
   get '/login' => 'sessions#new'

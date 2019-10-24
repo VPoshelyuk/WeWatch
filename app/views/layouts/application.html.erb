@@ -16,8 +16,12 @@
 
   </style>
   
+<<<<<<< HEAD
   <body class= "main_body">
 
+=======
+  <body background-image: url('https://images.unsplash.com/photo-1514306191717-452ec28c7814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80');">
+>>>>>>> 82b5841b87a1d9878375314e68685f65c9f9f2e9
     <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: #cc373c;">
       <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
         <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +31,7 @@
         <ul class="navbar-nav">
             <% if logged_in? %>
               <a class="nav-link" href="<%= logout_path %>" data-method="delete">Log Out</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a class="nav-link" href="<%= user_path(@user) %>">Account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="nav-link" href="<%= user_path(session[:user_id]) %>">Account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <% else %>
               <a class="nav-link" href="<%= login_path %>">Log In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a class="nav-link" href="<%= signup_path %>">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,8 +54,12 @@
       </ul>
       </div>
 </nav>
+<<<<<<< HEAD
       <%# <div class="background-image"> <%= image_tag "background.jpg", :class => "img-fluid" %>
 
+=======
+     
+>>>>>>> 82b5841b87a1d9878375314e68685f65c9f9f2e9
     <%= yield %>
   </body>
 </html>
