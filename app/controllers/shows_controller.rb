@@ -7,21 +7,21 @@ class ShowsController < ApplicationController
             # redirect_to shows_path(@shows)
             render :index
         else
-            @shows = Show.all
+            @shows = Show.all.sort_by{ |show| show.created_at }
         end
     end
 
     def show
+        in_database = Show.find(params[:id])
+        TMDBApi.all_the_season_info(params[:id]) if !in_database.num_of_seasons
         @show = Show.find(params[:id])
         if @show.views.find{|view| view.user_id == session[:user_id]}
             @view = @show.views.find{|view| view.user_id == session[:user_id]}
         else
             @view = View.new
         end
-
-        
-        @watches = Watch.all.where(user_id: session[:user_id],watched: true)
         @seasons = @show.seasons
+        @image_path  = @show.poster_path
     end
 
     def search_shows 
