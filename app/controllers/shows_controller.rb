@@ -2,13 +2,12 @@ class ShowsController < ApplicationController
     def index
         # if user input in params, show filtered results 
         # otherwise show everything 
-        if search_shows != nil
-            @shows = Show.find_by(name: params[:q])
-            # redirect_to shows_path(@shows)
-            render :index
-        else
-            @shows = Show.all
-        end
+        # byebug
+        @shows = if params[:q] != nil
+                    Show.search_shows(params[:q])
+                 else
+                    Show.all
+                 end
     end
 
     def show
@@ -24,8 +23,6 @@ class ShowsController < ApplicationController
         @seasons = @show.seasons
     end
 
-    def search_shows 
-        @shows = Show.find_by(name: params[:q])
-    end 
+   
 end
  

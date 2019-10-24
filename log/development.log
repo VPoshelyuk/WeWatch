@@ -33239,3 +33239,2762 @@ Processing by ShowsController#show as HTML
 Completed 200 OK in 37ms (Views: 26.1ms | ActiveRecord: 3.9ms | Allocations: 19957)
 
 
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShows (20191021144911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "shows" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "overview" varchar, "num_of_seasons" integer, "poster_path" varchar, "vote_avg" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021144911"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateViews (20191021145010)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "views" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "show_id" integer, "status" varchar DEFAULT 'Not Watching', "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021145010"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20191021145554)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "first_name" varchar, "last_name" varchar, "age" integer, "password_digest" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021145554"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFollows (20191021162505)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "follows" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "followed_user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_follows_on_user_id" ON "follows" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_follows_on_followed_user_id" ON "follows" ("followed_user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_follows_on_user_id_and_followed_user_id" ON "follows" ("user_id", "followed_user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021162505"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserAchievements (20191021181519)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "user_achievements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "achievement_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181519"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAchievements (20191021181554)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "achievements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181554"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSeasons (20191021181924)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "seasons" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "show_id" integer, "name" varchar, "episode_count" integer, "overview" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181924"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20191021182237)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "episode_id" integer, "comment" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021182237"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEpisodes (20191022152244)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "episodes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "season_id" integer, "name" varchar, "overview" varchar, "air_date" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191022152244"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWatches (20191023033818)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "watches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "episode_id" integer, "watched" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191023033818"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddFollowings (20191024042930)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "followings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "followed_user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_followings_on_user_id" ON "followings" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_followings_on_followed_user_id" ON "followings" ("followed_user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_followings_on_user_id_and_followed_user_id" ON "followings" ("user_id", "followed_user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191024042930"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-24 13:39:27.791495"], ["updated_at", "2019-10-24 13:39:27.791495"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/shows" for ::1 at 2019-10-24 09:43:42 -0400
+  [1m[35m (22.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 863)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 3277ms (Views: 3170.0ms | ActiveRecord: 3.5ms | Allocations: 1438195)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 09:43:48 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 557)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 32ms (Views: 25.4ms | ActiveRecord: 0.7ms | Allocations: 13391)
+
+
+Started GET "/login" for ::1 at 2019-10-24 09:43:49 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 14.8ms | Allocations: 2445)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 0.2ms | Allocations: 14955)
+
+
+Started GET "/signup" for ::1 at 2019-10-24 09:43:50 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/_form.html.erb (Duration: 12.8ms | Allocations: 3084)
+  Rendered users/new.html.erb within layouts/application (Duration: 17.5ms | Allocations: 3411)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 51ms (Views: 46.3ms | ActiveRecord: 0.3ms | Allocations: 16029)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 09:43:52 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 557)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 39ms (Views: 33.0ms | ActiveRecord: 0.7ms | Allocations: 13395)
+
+
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShows (20191021144911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "shows" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "overview" varchar, "num_of_seasons" integer, "poster_path" varchar, "vote_avg" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021144911"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateViews (20191021145010)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "views" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "show_id" integer, "status" varchar DEFAULT 'Not Watching', "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021145010"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20191021145554)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "first_name" varchar, "last_name" varchar, "age" integer, "password_digest" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021145554"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserAchievements (20191021181519)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "user_achievements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "achievement_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181519"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAchievements (20191021181554)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "achievements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181554"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSeasons (20191021181924)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "seasons" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "show_id" integer, "name" varchar, "episode_count" integer, "overview" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021181924"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20191021182237)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "episode_id" integer, "comment" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021182237"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEpisodes (20191022152244)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "episodes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "season_id" integer, "name" varchar, "overview" varchar, "air_date" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191022152244"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWatches (20191023033818)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "watches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "episode_id" integer, "watched" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191023033818"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddFollowings (20191024042930)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "followings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "followed_user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_followings_on_user_id" ON "followings" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_followings_on_followed_user_id" ON "followings" ("followed_user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_followings_on_user_id_and_followed_user_id" ON "followings" ("user_id", "followed_user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191024042930"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-24 13:48:43.159103"], ["updated_at", "2019-10-24 13:48:43.159103"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/shows" for ::1 at 2019-10-24 10:46:26 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 37.7ms | Allocations: 863)
+Started GET "/shows" for ::1 at 2019-10-24 10:46:28 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 651)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 1805ms (Views: 1694.3ms | ActiveRecord: 2.9ms | Allocations: 1541162)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 1231ms (Views: 1225.1ms | ActiveRecord: 0.9ms | Allocations: 1218504)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:03 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 557)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 22.3ms | ActiveRecord: 0.6ms | Allocations: 13515)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:04 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (1.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 557)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 71ms (Views: 64.4ms | ActiveRecord: 2.0ms | Allocations: 13508)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:04 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 26ms (Views: 21.5ms | ActiveRecord: 0.5ms | Allocations: 13491)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:05 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 557)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 64ms (Views: 58.8ms | ActiveRecord: 0.6ms | Allocations: 13510)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:05 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (3.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 64ms (Views: 55.2ms | ActiveRecord: 4.1ms | Allocations: 13484)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:05 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 106ms (Views: 100.0ms | ActiveRecord: 0.5ms | Allocations: 13493)
+
+
+Started GET "/" for ::1 at 2019-10-24 10:47:07 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 24ms (Views: 19.1ms | ActiveRecord: 0.6ms | Allocations: 13491)
+
+
+Started GET "/signup" for ::1 at 2019-10-24 10:47:10 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/_form.html.erb (Duration: 17.2ms | Allocations: 4689)
+  Rendered users/new.html.erb within layouts/application (Duration: 19.4ms | Allocations: 5021)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 0.2ms | Allocations: 17717)
+
+
+Started GET "/login" for ::1 at 2019-10-24 10:47:11 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 977)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 49ms (Views: 44.0ms | ActiveRecord: 0.2ms | Allocations: 13593)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:12 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 27ms (Views: 21.0ms | ActiveRecord: 0.5ms | Allocations: 13501)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:47:13 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 23ms (Views: 18.7ms | ActiveRecord: 0.6ms | Allocations: 13487)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 10:47:17 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 556)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 26ms (Views: 19.1ms | ActiveRecord: 1.0ms | Allocations: 13474)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 10:53:28 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (12.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5979)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 13.4ms | Allocations: 12685)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Show:0x00007fce1b886f30>):
+    1: <h1>Welcome to WeWatch</h1>
+    2: <ul>
+    3: <% @shows.each do |show| %>
+    4:     <li><%= link_to show.name, show_path(show) %></li>
+    5:     <p>Number of seasons: <%= show.num_of_seasons %></p>
+    6:     <p>Rating: <%= show.vote_avg %></p>
+  
+app/views/shows/index.html.erb:3
+app/controllers/shows_controller.rb:8:in `index'
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 10:53:54 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (10.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+Redirected to http://localhost:3000/shows.1399
+Completed 302 Found in 52ms (ActiveRecord: 12.7ms | Allocations: 21193)
+
+
+Started GET "/shows.1399" for ::1 at 2019-10-24 10:53:55 -0400
+Processing by ShowsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (65.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (13.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 271.0ms | Allocations: 169255)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 369ms (Views: 285.6ms | ActiveRecord: 79.4ms | Allocations: 182511)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 10:53:58 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+Redirected to http://localhost:3000/shows.1399
+Completed 302 Found in 9ms (ActiveRecord: 1.0ms | Allocations: 1904)
+
+
+Started GET "/shows.1399" for ::1 at 2019-10-24 10:53:58 -0400
+Processing by ShowsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (26.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 372.5ms | Allocations: 169246)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 396ms (Views: 360.9ms | ActiveRecord: 29.9ms | Allocations: 182167)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 10:54:22 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (29.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 288.4ms | Allocations: 169225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 331ms (Views: 293.1ms | ActiveRecord: 32.2ms | Allocations: 182139)
+
+
+Started GET "/shows?q=St.+Elsewhere&commit=Search" for ::1 at 2019-10-24 10:54:31 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"St. Elsewhere", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "St. Elsewhere"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "St. Elsewhere"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+Redirected to http://localhost:3000/shows.30
+Completed 302 Found in 8ms (ActiveRecord: 0.4ms | Allocations: 1935)
+
+
+Started GET "/shows.30" for ::1 at 2019-10-24 10:54:31 -0400
+Processing by ShowsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (4.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (22.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 214.4ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 243ms (Views: 210.9ms | ActiveRecord: 26.8ms | Allocations: 182137)
+
+
+Started GET "/shows.30" for ::1 at 2019-10-24 10:59:40 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:26:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (14.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 153.6ms | Allocations: 173698)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 210ms (Views: 161.1ms | ActiveRecord: 19.1ms | Allocations: 201476)
+
+
+Started GET "/shows?q=vera&commit=Search" for ::1 at 2019-10-24 10:59:47 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"vera", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "vera"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:26:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (23.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 279.1ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 297ms (Views: 267.0ms | ActiveRecord: 26.1ms | Allocations: 182115)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:00:10 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (14.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 212.6ms | Allocations: 173698)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 258ms (Views: 209.4ms | ActiveRecord: 20.0ms | Allocations: 201491)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:00:22 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (17.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 404.8ms | Allocations: 169226)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 510ms (Views: 487.2ms | ActiveRecord: 19.1ms | Allocations: 182171)
+
+
+Started GET "/shows?q=Dallas&commit=Search" for ::1 at 2019-10-24 11:00:35 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Dallas", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 3490)
+Completed 500 Internal Server Error in 55533ms (ActiveRecord: 1.5ms | Allocations: 143131)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Show:0x00007fce1860ca78>):
+    1: <h1>Welcome to WeWatch</h1>
+    2: <ul>
+    3: <% @shows.each do |show| %>
+    4:     <li><%= link_to show.name, show_path(show) %></li>
+    5:     <p>Number of seasons: <%= show.num_of_seasons %></p>
+    6:     <p>Rating: <%= show.vote_avg %></p>
+  
+app/views/shows/index.html.erb:3
+Started GET "/shows?q=Dallas&commit=Search" for ::1 at 2019-10-24 11:02:36 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Dallas", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+Completed 500 Internal Server Error in 137439ms (ActiveRecord: 2.8ms | Allocations: 38045)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/shows_controller.rb:12:in `index'
+Started GET "/shows?q=Dallas&commit=Search" for ::1 at 2019-10-24 11:05:54 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Dallas", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 346)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 68646ms (Views: 1071.0ms | ActiveRecord: 5.5ms | Allocations: 1453831)
+
+
+Started GET "/shows?q=Dallas&commit=Search" for ::1 at 2019-10-24 11:08:03 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Dallas", "commit"=>"Search"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Dallas"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 345)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 6792ms (Views: 25.3ms | ActiveRecord: 0.4ms | Allocations: 18893)
+
+
+Started GET "/shows/40" for ::1 at 2019-10-24 11:08:13 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  [1m[36mView Load (0.5ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 40]]
+  ↳ app/controllers/shows_controller.rb:16:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.7ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 40]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 18.1ms | Allocations: 4123)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 112ms (Views: 66.8ms | ActiveRecord: 3.1ms | Allocations: 28785)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:08:25 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (6.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (20.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 221.1ms | Allocations: 169503)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 258ms (Views: 224.3ms | ActiveRecord: 26.9ms | Allocations: 183528)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:08:26 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (78.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 267.5ms | Allocations: 169224)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 291ms (Views: 202.2ms | ActiveRecord: 81.6ms | Allocations: 182184)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 11:08:30 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 57)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 6175ms (Views: 23.3ms | ActiveRecord: 1.0ms | Allocations: 17579)
+
+
+Started GET "/shows/1399" for ::1 at 2019-10-24 11:08:40 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"1399"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/controllers/shows_controller.rb:16:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 1956)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 37ms (Views: 27.2ms | ActiveRecord: 1.2ms | Allocations: 15628)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:08:45 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (21.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 184.8ms | Allocations: 169223)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 202ms (Views: 174.1ms | ActiveRecord: 23.2ms | Allocations: 182161)
+
+
+Started GET "/shows/2" for ::1 at 2019-10-24 11:08:57 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 2]]
+  ↳ app/controllers/shows_controller.rb:16:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 2]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1420)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 64ms (Views: 53.0ms | ActiveRecord: 1.0ms | Allocations: 14949)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:09:19 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:28:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (23.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 196.1ms | Allocations: 169223)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 215ms (Views: 186.4ms | ActiveRecord: 24.8ms | Allocations: 182174)
+
+
+Started GET "/shows?q=asdihfoaisdjf&commit=Search" for ::1 at 2019-10-24 11:11:54 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"asdihfoaisdjf", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "asdihfoaisdjf"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (17.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 218.9ms | Allocations: 173699)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 274ms (Views: 222.3ms | ActiveRecord: 22.2ms | Allocations: 201441)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 11:12:31 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 57)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 30ms (Views: 22.5ms | ActiveRecord: 0.6ms | Allocations: 13270)
+
+
+Started GET "/login" for ::1 at 2019-10-24 11:13:15 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1145)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 29ms (Views: 26.3ms | ActiveRecord: 0.2ms | Allocations: 13760)
+
+
+Started POST "/login" for ::1 at 2019-10-24 11:13:18 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"RJaT4kfbz753U8i4OJpRI4WbrCk1sN0YbLeHpuU6JLJXYmAt2IOdCqfZ6464FLNwrlYhFj0sdaLiICbkG+4CvQ==", "user"=>{"user_name"=>"jeffjiang8", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "jeffjiang8"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms | Allocations: 2594)
+
+
+Started GET "/login" for ::1 at 2019-10-24 11:13:18 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 765)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.2ms | Allocations: 13023)
+
+
+Started POST "/login" for ::1 at 2019-10-24 11:13:26 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"rR78tnebV+yyF6FB51imvtEKpjz4QvIyvZRzllyZACzZJ1nnwwq27YnkWH1Rvlr31Dp9DLGeQiRZPIHNfG2iOg==", "user"=>{"user_name"=>"jeffjiang8", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "jeffjiang8"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms | Allocations: 1526)
+
+
+Started GET "/login" for ::1 at 2019-10-24 11:13:26 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 765)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.2ms | Allocations: 13023)
+
+
+Started GET "/signup" for ::1 at 2019-10-24 11:13:28 -0400
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendered users/_form.html.erb (Duration: 10.2ms | Allocations: 3220)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 3545)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 52ms (Views: 47.8ms | ActiveRecord: 0.3ms | Allocations: 16277)
+
+
+Started POST "/users" for ::1 at 2019-10-24 11:13:45 -0400
+Processing by UsersController#create as JS
+  Parameters: {"authenticity_token"=>"3EFAXIfMei2JmH5TuB7W9IwA5iAstDQg/FXIqefguHeHwnuj8Sgf4fwkQHVRdQHJ4fDglfg4Npa/H0Cv8cXCdA==", "user"=>{"user_name"=>"jeffjiang8", "first_name"=>"Jeff", "last_name"=>"Jiang", "age"=>"2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone_number"=>"8888888888"}, "commit"=>"Save Information"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "jeffjiang8"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."phone_number" = ? LIMIT ?[0m  [["phone_number", "8888888888"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (4.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "first_name", "last_name", "age", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "jeffjiang8"], ["first_name", "Jeff"], ["last_name", "Jiang"], ["age", 2], ["password_digest", "$2a$12$1yhgXfAJv75SPBJfoZhB0.O0xQgiO1fqW1poJxQajOiEdh5WdMBku"], ["phone_number", "8888888888"], ["created_at", "2019-10-24 15:13:46.083165"], ["updated_at", "2019-10-24 15:13:46.083165"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 200 OK in 256ms (ActiveRecord: 5.3ms | Allocations: 6115)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 11:13:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 431)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 22.2ms | ActiveRecord: 0.5ms | Allocations: 13273)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:13:52 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (22.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 202.2ms | Allocations: 169227)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 222ms (Views: 191.0ms | ActiveRecord: 26.0ms | Allocations: 181852)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 11:13:57 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 57)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 21.3ms | ActiveRecord: 0.8ms | Allocations: 12957)
+
+
+Started GET "/shows/1399" for ::1 at 2019-10-24 11:13:58 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"1399"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1957)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 79ms (Views: 22.9ms | ActiveRecord: 2.6ms | Allocations: 24299)
+
+
+Started POST "/views" for ::1 at 2019-10-24 11:14:00 -0400
+Processing by ViewsController#create as JS
+  Parameters: {"authenticity_token"=>"I+659DOPIbQjUUFpojMfz2B/XRH8ZYUWSOBuyUINLI6QJSiNgaLzEWChqQq43HeaZTJ5p7jC1XkN2+03PRFkDA==", "view"=>{"status"=>"Watching", "show_id"=>"1399", "user_id"=>"1"}, "commit"=>"Confirm"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mView Create (0.5ms)[0m  [1m[32mINSERT INTO "views" ("user_id", "show_id", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["show_id", 1399], ["status", "Watching"], ["created_at", "2019-10-24 15:14:00.696029"], ["updated_at", "2019-10-24 15:14:00.696029"]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+Redirected to http://localhost:3000/shows/1399
+Completed 200 OK in 21ms (ActiveRecord: 2.3ms | Allocations: 6642)
+
+
+Started GET "/shows/1399" for ::1 at 2019-10-24 11:14:00 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"1399"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.1ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1460)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 46ms (Views: 34.6ms | ActiveRecord: 1.9ms | Allocations: 14676)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:14:06 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (36.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 268.0ms | Allocations: 169230)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 290ms (Views: 242.9ms | ActiveRecord: 39.5ms | Allocations: 181832)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-24 11:14:10 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1420)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 0.9ms | Allocations: 14611)
+
+
+Started POST "/views" for ::1 at 2019-10-24 11:14:13 -0400
+Processing by ViewsController#create as JS
+  Parameters: {"authenticity_token"=>"JNlCCAPXC0R0bdieufDvDYIBhLmgZI8HAXyh8vTzpNaXEtNxsfrZ4TedMP2jH4dYh0ygD+TD32hERyIMi+/sVA==", "view"=>{"status"=>"Watching", "show_id"=>"36", "user_id"=>"1"}, "commit"=>"Confirm"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mView Create (0.5ms)[0m  [1m[32mINSERT INTO "views" ("user_id", "show_id", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["show_id", 36], ["status", "Watching"], ["created_at", "2019-10-24 15:14:13.131612"], ["updated_at", "2019-10-24 15:14:13.131612"]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+Redirected to http://localhost:3000/shows/36
+Completed 200 OK in 13ms (ActiveRecord: 2.4ms | Allocations: 5057)
+
+
+Started GET "/shows/36" for ::1 at 2019-10-24 11:14:13 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 36]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1456)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 26ms (Views: 18.0ms | ActiveRecord: 0.9ms | Allocations: 14657)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:14:16 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (19.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 202.4ms | Allocations: 169223)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 224ms (Views: 198.4ms | ActiveRecord: 22.6ms | Allocations: 181829)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:16:00 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (17.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 232.5ms | Allocations: 169484)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 264ms (Views: 241.6ms | ActiveRecord: 19.7ms | Allocations: 183184)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 11:16:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 415)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 26ms (Views: 20.1ms | ActiveRecord: 0.8ms | Allocations: 13283)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 11:19:38 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (18.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 207.4ms | Allocations: 169227)
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 228ms (Views: 203.3ms | ActiveRecord: 21.0ms | Allocations: 181842)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:19:47 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (4.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (24.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 246.1ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 266ms (Views: 233.0ms | ActiveRecord: 28.9ms | Allocations: 181693)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:24:04 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (4.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (14.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 266.5ms | Allocations: 173713)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 323ms (Views: 275.8ms | ActiveRecord: 21.2ms | Allocations: 206087)
+
+
+Started GET "/shows?q=game&commit=Search" for ::1 at 2019-10-24 11:24:10 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (51.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 284.0ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 310ms (Views: 250.8ms | ActiveRecord: 55.7ms | Allocations: 181684)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:24:20 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (1.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (17.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 179.0ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 235ms (Views: 179.3ms | ActiveRecord: 19.5ms | Allocations: 181694)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:31:13 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (50.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (11.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 348.5ms | Allocations: 173584)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 488ms (Views: 357.4ms | ActiveRecord: 62.1ms | Allocations: 200528)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:31:23 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (25.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 202.5ms | Allocations: 169223)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 227ms (Views: 191.2ms | ActiveRecord: 29.2ms | Allocations: 181700)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:35:56 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (73.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (35.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 260.6ms | Allocations: 174307)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 1597ms (Views: 1399.5ms | ActiveRecord: 110.7ms | Allocations: 1571801)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 11:37:08 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 59)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 32ms (Views: 25.1ms | ActiveRecord: 1.2ms | Allocations: 12996)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 11:37:14 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (5.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (21.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 233.5ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 258ms (Views: 226.8ms | ActiveRecord: 27.2ms | Allocations: 181696)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 11:54:42 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1332)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 62ms (Views: 30.3ms | ActiveRecord: 1.0ms | Allocations: 26220)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 13:08:06 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1065)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 51ms (Views: 25.4ms | ActiveRecord: 2.0ms | Allocations: 25647)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:08:08 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 271ms (ActiveRecord: 0.2ms | Allocations: 105595)
+
+
+  
+NameError (undefined local variable or method `name' for #<ShowsController:0x00007fc597579950>):
+  
+app/controllers/shows_controller.rb:28:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:09:03 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.6ms | Allocations: 15925)
+
+
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+app/controllers/shows_controller.rb:28:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:10:35 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 1.7ms | Allocations: 15858)
+
+
+  
+NoMethodError (undefined method `lowercase' for nil:NilClass):
+  
+app/controllers/shows_controller.rb:27:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:10:55 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.8ms | Allocations: 15910)
+
+
+  
+NoMethodError (undefined method `lowercase' for nil:NilClass):
+  
+app/controllers/shows_controller.rb:27:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:11:02 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (16.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 183.4ms | Allocations: 173700)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 240ms (Views: 191.5ms | ActiveRecord: 21.0ms | Allocations: 201345)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:11:20 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (67.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 241.3ms | Allocations: 169300)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 275ms (Views: 200.9ms | ActiveRecord: 70.9ms | Allocations: 181979)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 13:11:26 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (4.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "game of thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (21.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 265.3ms | Allocations: 173699)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 313ms (Views: 254.9ms | ActiveRecord: 27.6ms | Allocations: 201284)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 13:11:55 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" = ? LIMIT ?[0m  [["name", "Game of Thrones"], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  Rendered shows/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 67)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 51ms (Views: 14.9ms | ActiveRecord: 2.0ms | Allocations: 32555)
+
+
+Started GET "/shows/1399" for ::1 at 2019-10-24 13:11:56 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"1399"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.7ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.6ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 19.6ms | Allocations: 4161)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 73ms (Views: 32.1ms | ActiveRecord: 4.0ms | Allocations: 27123)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:11:59 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (4.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (26.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 234.2ms | Allocations: 169252)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 254ms (Views: 219.7ms | ActiveRecord: 30.8ms | Allocations: 181899)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:15:41 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+Completed 404 Not Found in 26ms (ActiveRecord: 1.3ms | Allocations: 17497)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Show with 'id'={:name=>nil}):
+  
+app/controllers/shows_controller.rb:27:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:15:50 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (2.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (69.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 232.1ms | Allocations: 173741)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 273ms (Views: 173.1ms | ActiveRecord: 73.7ms | Allocations: 201380)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:21:04 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 242ms (ActiveRecord: 0.3ms | Allocations: 117335)
+
+
+  
+NameError (undefined local variable or method `name' for #<ShowsController:0x00007fc5959c6ca8>):
+  
+app/controllers/shows_controller.rb:28:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:21:17 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.1ms | Allocations: 15688)
+
+
+  
+TypeError (can't quote Array):
+  
+app/controllers/shows_controller.rb:28:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:21:33 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 1162)
+
+
+  
+TypeError (can't quote Array):
+  
+app/controllers/shows_controller.rb:28:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:24:19 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (3.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:27:in `search_shows'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (19.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 407.8ms | Allocations: 173700)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 480ms (Views: 412.7ms | ActiveRecord: 25.3ms | Allocations: 201342)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:27:32 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 26334ms (ActiveRecord: 1.5ms | Allocations: 50934)
+
+
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+app/controllers/shows_controller.rb:29:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:28:14 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 10156ms (ActiveRecord: 0.2ms | Allocations: 9440)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `search_shows'
+app/controllers/shows_controller.rb:29:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:28:30 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 63518ms (ActiveRecord: 4.6ms | Allocations: 248470)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `search_shows'
+app/controllers/shows_controller.rb:29:in `search_shows'
+app/controllers/shows_controller.rb:5:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:29:39 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (453.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 17793.2ms | Allocations: 126530705)
+Started GET "/shows" for ::1 at 2019-10-24 13:30:46 -0400
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (37.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 262.0ms | Allocations: 174661)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 1957ms (Views: 1827.5ms | ActiveRecord: 40.1ms | Allocations: 1570776)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 13:31:02 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (25.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 245.5ms | Allocations: 169225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 269ms (Views: 240.7ms | ActiveRecord: 25.9ms | Allocations: 181227)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 13:33:43 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (5.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) = 'family') LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+  [1m[36mShow Load (4.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) = 'game of thrones') LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+  [1m[35m (8.6ms)[0m  [1m[34mSELECT "shows"."name" FROM "shows"[0m
+  ↳ (byebug):1:in `index'
+  [1m[36mShow Load (4.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) like 'family') LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+  [1m[36mShow Load (2.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%family%') LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/shows_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 500744ms (ActiveRecord: 26.9ms | Allocations: 4791915)
+
+
+  
+NameError (undefined local variable or method `search_shows' for #<ShowsController:0x00007fda1dbcb818>
+Did you mean?  search_path):
+  
+app/controllers/shows_controller.rb:6:in `index'
+Started GET "/shows" for ::1 at 2019-10-24 13:42:13 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (16.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 174.5ms | Allocations: 174045)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 229ms (Views: 181.5ms | ActiveRecord: 17.5ms | Allocations: 200739)
+
+
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 13:42:17 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.2ms | Allocations: 4161)
+
+
+  
+NameError (undefined local variable or method `params' for #<Class:0x00007fda17553a18>):
+  
+app/models/show.rb:12:in `search_shows'
+app/controllers/shows_controller.rb:7:in `index'
+Started GET "/shows?q=Game+of+Thrones&commit=Search" for ::1 at 2019-10-24 13:43:15 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"Game of Thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (3.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%game of thrones%')[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 5452)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 63ms (Views: 28.3ms | ActiveRecord: 4.5ms | Allocations: 32098)
+
+
+Started GET "/shows?q=family&commit=Search" for ::1 at 2019-10-24 13:43:21 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"family", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.8ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%family%')[0m
+  ↳ app/views/shows/index.html.erb:8
+  Rendered shows/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1491)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 29ms (Views: 20.4ms | ActiveRecord: 5.1ms | Allocations: 13503)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:45:42 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (25.6ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 220.7ms | Allocations: 169431)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 237ms (Views: 209.0ms | ActiveRecord: 25.8ms | Allocations: 182505)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 13:45:48 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%game of thrones%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 651)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 27ms (Views: 18.4ms | ActiveRecord: 5.2ms | Allocations: 12663)
+
+
+Started GET "/shows?q=family&commit=Search" for ::1 at 2019-10-24 13:45:55 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"family", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (5.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%family%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1491)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 29ms (Views: 20.0ms | ActiveRecord: 5.7ms | Allocations: 13501)
+
+
+Started GET "/shows?q=man&commit=Search" for ::1 at 2019-10-24 13:57:16 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"man", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%man%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 16.3ms | Allocations: 10228)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 69ms (Views: 37.4ms | ActiveRecord: 4.6ms | Allocations: 36464)
+
+
+Started GET "/shows?q=dude&commit=Search" for ::1 at 2019-10-24 13:57:21 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"dude", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (6.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%dude%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 587)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 30ms (Views: 21.1ms | ActiveRecord: 6.3ms | Allocations: 12643)
+
+
+Started GET "/shows?q=dude&commit=Search" for ::1 at 2019-10-24 13:58:24 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"dude", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%dude%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 932)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 44ms (Views: 13.5ms | ActiveRecord: 5.5ms | Allocations: 27539)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:58:26 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (27.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 329.2ms | Allocations: 173704)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 343ms (Views: 313.5ms | ActiveRecord: 27.8ms | Allocations: 185693)
+
+
+Started GET "/shows?q=dude&commit=Search" for ::1 at 2019-10-24 13:58:29 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"dude", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%dude%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 585)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 25ms (Views: 16.9ms | ActiveRecord: 4.6ms | Allocations: 12619)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:58:31 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (38.7ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 278.9ms | Allocations: 169222)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 295ms (Views: 251.0ms | ActiveRecord: 39.3ms | Allocations: 181206)
+
+
+Started GET "/shows?q=dude&commit=Search" for ::1 at 2019-10-24 13:59:17 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"dude", "commit"=>"Search"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (3.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%dude%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 932)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 53ms (Views: 23.9ms | ActiveRecord: 4.2ms | Allocations: 27585)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 13:59:54 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (14.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 200.0ms | Allocations: 174053)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 246ms (Views: 207.2ms | ActiveRecord: 15.6ms | Allocations: 200617)
+
+
+Started GET "/shows?q=dude&commit=Search" for ::1 at 2019-10-24 13:59:59 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"dude", "commit"=>"Search"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (4.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%dude%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 586)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 37ms (Views: 29.8ms | ActiveRecord: 4.4ms | Allocations: 12629)
+
+
+Started GET "/shows?q=game+of+thrones&commit=Search" for ::1 at 2019-10-24 14:00:02 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game of thrones", "commit"=>"Search"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (6.5ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%game of thrones%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 650)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 27ms (Views: 17.7ms | ActiveRecord: 6.9ms | Allocations: 12676)
+
+
+Started GET "/shows?q=game&commit=Search" for ::1 at 2019-10-24 14:00:05 -0400
+Processing by ShowsController#index as HTML
+  Parameters: {"q"=>"game", "commit"=>"Search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (6.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE (lower(name) LIKE '%game%')[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1241)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 31ms (Views: 22.7ms | ActiveRecord: 6.6ms | Allocations: 13264)
+
+
+Started GET "/shows/211" for ::1 at 2019-10-24 14:00:07 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"211"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.3ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.9ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 211]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.6ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 211]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 19.9ms | Allocations: 4127)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 70ms (Views: 32.5ms | ActiveRecord: 3.6ms | Allocations: 26429)
+
+
+Started POST "/views" for ::1 at 2019-10-24 14:00:11 -0400
+Processing by ViewsController#create as JS
+  Parameters: {"authenticity_token"=>"nvkP0Le1TAUZZv8EhhlWIaGIRjV81yCosqzeSqMKCXMtMp6pBZieoFqWF2ec9j50pMVigzhwcMf3l1203BZB8Q==", "view"=>{"status"=>"Watching", "show_id"=>"211", "user_id"=>"1"}, "commit"=>"Confirm"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[36mView Create (1.1ms)[0m  [1m[32mINSERT INTO "views" ("user_id", "show_id", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["show_id", 211], ["status", "Watching"], ["created_at", "2019-10-24 18:00:11.320290"], ["updated_at", "2019-10-24 18:00:11.320290"]]
+  ↳ app/controllers/views_controller.rb:7:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/views_controller.rb:7:in `create'
+Redirected to http://localhost:3000/shows/211
+Completed 200 OK in 17ms (ActiveRecord: 2.6ms | Allocations: 6868)
+
+
+Started GET "/shows/211" for ::1 at 2019-10-24 14:00:11 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"211"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 211]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.2ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 211]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1460)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 29ms (Views: 23.3ms | ActiveRecord: 0.7ms | Allocations: 14707)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:00:12 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1320)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 27ms (Views: 21.7ms | ActiveRecord: 0.4ms | Allocations: 14348)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:01:44 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.5ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (Duration: 10.9ms | Allocations: 7425)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.8ms | Allocations: 9387)
+
+
+  
+ActionView::Template::Error (undefined method `show_id' for #<View::ActiveRecord_Associations_CollectionProxy:0x00007fda1ce1f278>):
+     7: <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+     8: <p>Phone Number: <%= @user.phone_number %>
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <%= @user.views.show_id %>
+    11: 
+    12: <% if @user.id == session[:user_id]%>
+    13:   <%= button_to "Edit Account Information", {action: "edit", controller: "users", id: @user.id}, method: "get"%> 
+  
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:02:09 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 448)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 51ms (Views: 44.7ms | ActiveRecord: 0.5ms | Allocations: 14001)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:02:54 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1346)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 24.2ms | ActiveRecord: 0.7ms | Allocations: 14896)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:03:06 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 880)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 30ms (Views: 24.8ms | ActiveRecord: 0.5ms | Allocations: 13486)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:03:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.1ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2627)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms | Allocations: 4587)
+
+
+  
+ActionView::Template::Error (undefined method `name' for 1399:Integer):
+     8: <p>Phone Number: <%= @user.phone_number %>
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <%= view.show_id.name%>
+    12:                      <% end %>
+    13: 
+    14: <% if @user.id == session[:user_id]%>
+  
+app/views/users/show.html.erb:11
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:05:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1182)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 22.4ms | ActiveRecord: 0.6ms | Allocations: 14734)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:06:17 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1189)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.5ms | Allocations: 14737)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:08:22 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2782)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 35ms (Views: 30.6ms | ActiveRecord: 0.9ms | Allocations: 16332)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:09:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2781)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 33ms (Views: 27.0ms | ActiveRecord: 1.2ms | Allocations: 16329)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:10:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2781)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 28ms (Views: 24.1ms | ActiveRecord: 1.0ms | Allocations: 16326)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:10:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 4227)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 33ms (Views: 26.9ms | ActiveRecord: 1.2ms | Allocations: 17776)
+
+
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:10:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1547)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/1" for ::1 at 2019-10-24 14:10:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mCACHE Show Load (0.0ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 3908)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 33ms (Views: 28.7ms | ActiveRecord: 1.2ms | Allocations: 16379)
+
+
+Started GET "/shows" for ::1 at 2019-10-24 14:10:59 -0400
+Processing by ShowsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering shows/index.html.erb within layouts/application
+  [1m[36mShow Load (39.9ms)[0m  [1m[34mSELECT "shows".* FROM "shows"[0m
+  ↳ app/views/shows/index.html.erb:3
+  Rendered shows/index.html.erb within layouts/application (Duration: 322.9ms | Allocations: 169401)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 350ms (Views: 306.8ms | ActiveRecord: 40.1ms | Allocations: 182460)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:12:17 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2015)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms | Allocations: 3984)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <a href="<% show_path(@show) %>"><%= Show.find(view.show_id).name %></a>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:12:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1696)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms | Allocations: 3117)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <a href="<% show_path(@show) %>"><%= Show.find(view.show_id).name %></a>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:12:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2014)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.9ms | Allocations: 3983)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <a href="<%= show_path(@show) %>"><%= Show.find(view.show_id).name %></a>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:12:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1696)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 3117)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <a href="<%= show_path %>"><%= Show.find(view.show_id).name %></a>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:12:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (Duration: 328.9ms | Allocations: 155160)
+Completed 500 Internal Server Error in 337ms (ActiveRecord: 0.6ms | Allocations: 157131)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `show' for #<#<Class:0x00007fda18dc0e20>:0x00007fda18dcb460>):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <a href="<%= show_path(show.id) %>"><%= Show.find(view.show_id).name %></a>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:13:11 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:13:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:13:29 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:13:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:13:33 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.4ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:55 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:56 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:56 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:56 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:15:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:18:17 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/Game%20of%20Thrones" for ::1 at 2019-10-24 14:18:22 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Game of Thrones"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1555)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Game of Thrones):
+  
+app/controllers/users_controller.rb:52:in `set_user'
+Started GET "/users/1" for ::1 at 2019-10-24 14:18:24 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.4ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 12.5ms | Allocations: 2783)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 43ms (Views: 38.0ms | ActiveRecord: 1.4ms | Allocations: 16341)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:19:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2537)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms | Allocations: 4494)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <%= link_to Show.find(view.show_id).name, show_path(@show) %>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:20:04 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2759)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.8ms | Allocations: 4401)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"shows", :id=>nil}, missing required keys: [:id]):
+     9: <p>Age: <%= @user.age %>
+    10: <p>Recently Watched: <% @user.views.each do |view| %>
+    11:                         <ul>
+    12:                         <%= link_to Show.find(view.show_id).name, show_path(view.show_id) %>
+    13:                         </ul>
+    14:                      <% end %>
+    15: 
+  
+app/views/users/show.html.erb:12
+app/views/users/show.html.erb:10
+Started GET "/users/1" for ::1 at 2019-10-24 14:25:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.3ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  Rendered users/show.html.erb within layouts/application (Duration: 8.4ms | Allocations: 3238)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 39ms (Views: 33.8ms | ActiveRecord: 1.1ms | Allocations: 16787)
+
+
+Started GET "/users/1" for ::1 at 2019-10-24 14:25:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:52:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[36mShow Load (0.1ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 211], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  Rendered users/show.html.erb within layouts/application (Duration: 8.2ms | Allocations: 3309)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 35ms (Views: 30.5ms | ActiveRecord: 1.1ms | Allocations: 16860)
+
+
+Started GET "/shows/1399" for ::1 at 2019-10-24 14:25:43 -0400
+Processing by ShowsController#show as HTML
+  Parameters: {"id"=>"1399"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mShow Load (0.2ms)[0m  [1m[34mSELECT "shows".* FROM "shows" WHERE "shows"."id" = ? LIMIT ?[0m  [["id", 1399], ["LIMIT", 1]]
+  ↳ app/controllers/shows_controller.rb:14:in `show'
+  [1m[36mView Load (0.2ms)[0m  [1m[34mSELECT "views".* FROM "views" WHERE "views"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/controllers/shows_controller.rb:15:in `show'
+  Rendering shows/show.html.erb within layouts/application
+  [1m[36mSeason Load (0.8ms)[0m  [1m[34mSELECT "seasons".* FROM "seasons" WHERE "seasons"."show_id" = ?[0m  [["show_id", 1399]]
+  ↳ app/views/shows/show.html.erb:12
+  Rendered shows/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1988)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 200 OK in 34ms (Views: 26.6ms | ActiveRecord: 1.4ms | Allocations: 15599)
+
+

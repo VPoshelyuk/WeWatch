@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_033818) do
+ActiveRecord::Schema.define(version: 2019_10_24_042930) do
 
   create_table "achievements", force: :cascade do |t|
     t.string "name"
@@ -35,26 +35,20 @@ ActiveRecord::Schema.define(version: 2019_10_23_033818) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "followee_id"
-    t.integer "follower_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ratings", force: :cascade do |t|
+  create_table "followings", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "show_id"
-    t.float "rating"
+    t.integer "followed_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
+    t.index ["user_id", "followed_user_id"], name: "index_followings_on_user_id_and_followed_user_id", unique: true
+    t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
   create_table "seasons", force: :cascade do |t|
     t.integer "show_id"
     t.string "name"
     t.integer "episode_count"
-    t.string "poster_path"
     t.string "overview"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -64,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_033818) do
     t.string "name"
     t.string "overview"
     t.integer "num_of_seasons"
+    t.string "poster_path"
     t.integer "vote_avg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -90,10 +85,9 @@ ActiveRecord::Schema.define(version: 2019_10_23_033818) do
   create_table "views", force: :cascade do |t|
     t.integer "user_id"
     t.integer "show_id"
+    t.string "status", default: "Not Watching"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "episodes_watched"
-    t.string "status", default: "Not Watching"
   end
 
   create_table "watches", force: :cascade do |t|
