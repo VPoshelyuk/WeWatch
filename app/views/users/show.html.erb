@@ -7,7 +7,13 @@
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Phone Number: <%= @user.phone_number %>
 <p>Age: <%= @user.age %>
+<p>Recently Watched:  </p>
 
+<% @user.views.each do |view| %>
+  <ul>
+  <%= link_to view.show.name, show_path(view.show) %>
+  </ul> 
+<% end %>
 
 <% if @user.id == session[:user_id]%>
   <%= button_to "Edit Account Information", {action: "edit", controller: "users", id: @user.id}, method: "get"%> 
