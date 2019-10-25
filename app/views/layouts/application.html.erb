@@ -1,9 +1,18 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>WeWatch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Quicksand:500&display=swap');
+    </style>
+
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -15,37 +24,28 @@
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: #cc373c;">
       <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
-        <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> %>
-      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <% if logged_in? %>
-              <a class="nav-link" href="<%= logout_path %>" data-method="delete">Log Out</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a class="nav-link" href="<%= user_path(session[:user_id]) %>">Account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item"><a class="nav-link" href="<%= user_path(session[:user_id]) %>">Account</a><li>
+              <li class="nav-item"><a class="nav-link" href="<%= logout_path %>" data-method="delete">Log Out</a><li>
             <% else %>
-              <a class="nav-link" href="<%= login_path %>">Log In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a class="nav-link" href="<%= signup_path %>">Sign Up</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item"><a class="nav-link" href="<%= login_path %>">Log In</a><li>
+              <li class="nav-item"><a class="nav-link" href="<%= signup_path %>">Sign Up</a><li>
             <% end %>
-          <%# <li class="nav-item"> %>
-            <a class="nav-link" href="<%= shows_path %>">Shows</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><a class="nav-link" href="<%= shows_path %>">Shows</a>
+            <li><a class="nav-link" href="#">News</a>
         </ul>
-        <%# <form class="form-inline my-2 my-lg-0 pull-right">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> %>
-        <ul class="navbar-nav navbar-right" id="nav2" >
-          <li>
-          <%= bootstrap_form_tag(url: shows_path, method: "get") do %>
-          <%= label_tag(:q, "Search for Shows:")%>
-          <%= text_field_tag(:q) %>
-          <%= submit_tag("Search")%>
-          <% end %>
-          </li>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">Search for Shows:</li>&nbsp&nbsp&nbsp
         </ul>
-      </div>
+            <%= bootstrap_form_tag(url: shows_path, method: "get") do %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main" %></li>&nbsp
+          <li class="nav-item"><%= submit_tag "Search", :class => "btn btn-dark"%></li>
+        </ul>
+
+            <% end %>
 </nav>
-      <%# <div class="background-image"> <%= image_tag "background.jpg", :class => "img-fluid" %>
 
     <%= yield %>
   </body>
