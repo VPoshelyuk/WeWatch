@@ -1,36 +1,13 @@
-<%= stylesheet_link_tag "users" %>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
+<%= stylesheet_link_tag "seasons" %>
 
-h1 {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-ul {
-    text-align: center;
-    padding: 5px;
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 100px;
-    padding-right: 100px;
-    
-}
-
-
-
-</style>
-</head>
 
 <body class="season">
-
-<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
-<% @episodes.each do |episode| %>
-    <p>Episode <%= episode.episode_number%>: <%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
-<% end %>
-
+    <div class="season_container">
+        <div class="item">
+        <img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
+        <% @episodes.each do |episode| %>
+            <p>Episode <%= episode.episode_number%>: <%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
+        <% end %>
+        </div>
+    </div>
 </body>
-</html>

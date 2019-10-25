@@ -29,8 +29,29 @@
     background-color: white;
 }
 
-.follow_btn:hover span {display:none;}
-
-.follow:hover:before {
-    content: "Unfollow"
+.edit_btn{
+    color: black;
+    background-color: rgb(224, 11, 11);
+    width: 150px;
+    margin: 1vw;
 }
+
+.edit_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+
+.profile_container {
+    padding-left: 18vw;
+    width: 200vw;
+    height: 200px; /* height given for illustration */
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+  }
+  
+  .item {
+    margin: 10px;
+    flex: 0 1 calc(20% - 8px); /* <-- adjusting for margin */
+  }
