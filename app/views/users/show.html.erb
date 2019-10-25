@@ -12,11 +12,14 @@
 <p>Followers: <%= @user.followers.size%></p>
 <p>Following: <%= @user.followings.size%></p>
 <p>Recently Watched:  </p>
+<ul>
 <% @user.views.each do |view| %>
-  <ul>
-  <%= link_to view.show.name, show_path(view.show) %>
-  </ul> 
+    <li><%= link_to view.show.name, show_path(view.show) %></li>
+    <% @user.watches.each do |watch| %>
+        <li><%= link_to watch.episode.name, episode_path(watch.episode) %></li>
+    <% end %>
 <% end %>
+</ul> 
 
 <% if @user.id == session[:user_id]%>
   <%= button_to "Edit Account Information", {action: "edit", controller: "users", id: @user.id}, method: "get"%> 
