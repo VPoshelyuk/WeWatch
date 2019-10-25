@@ -1,6 +1,7 @@
  @import "bootstrap";
  @import "rails_bootstrap_forms";
  @import url('https://fonts.googleapis.com/css?family=Numans');
+ @import url('https://fonts.googleapis.com/css?family=Quicksand:500&display=swap');
 
  .main_body {
     background-image: url('https://images.unsplash.com/photo-1514306191717-452ec28c7814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80');
@@ -22,7 +23,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    border-radius: 0.4rem;
+    justify-content: space-around;
 
     .navbar-brand {
       color: white;
