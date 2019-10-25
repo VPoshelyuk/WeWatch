@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "users" %>
+<%= stylesheet_link_tag "shows" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,13 +24,14 @@ ul {
 
 </style>
 </head>
-
+<div class="episode-container">
 <body class="season">
 
-<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../assets/images/no_show_pic.jpg">
+<img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="show season" alt="../assets/images/no_show_pic.jpg">
 <% @episodes.each do |episode| %>
     <p>Episode <%= episode.episode_number%>: <%= link_to episode.name, episode_path(episode) %><%= " - ✔️" if @watches.find{|watch| watch.episode_id == episode.id }%></p>
 <% end %>
 
 </body>
+</div>
 </html>

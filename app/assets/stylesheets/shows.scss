@@ -34,3 +34,25 @@
     margin: 10px;
     flex: 0 1 calc(20% - 8px); /* <-- adjusting for margin */
   }
+
+  
+
+  img.rounded.float-right {
+    padding-right: 150px;
+  }
+
+  div.season-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 150px
+  }
+  
+  div.episode-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 150px
+  }
+
+  img.show.season {
+    padding-right: 150px;
+  }
