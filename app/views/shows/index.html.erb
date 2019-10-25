@@ -1,54 +1,15 @@
     <%= stylesheet_link_tag "shows" %>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
 
-h1 {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.list-container {
-    text-align: center;
-    vertical-align: top;
-    padding-left: 140px;
-    padding-right: 140px;
-    justify-content: space-around;
-    
-}
-
-.list-container ul{
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.list-container ul li{
-    list-style: none;
-    flex: 0 0 25%%;
-}
-
-
-
-</style>
-</head>
-
-
-<body class="shows">
 <h1>Welcome to WeWatch</h1>
-<ul class="list-container">
+<ul class="container">
     <% @shows.each do |show| %>
-        <li>
+        <li class="item">
             <%= link_to show.name, show_path(show) %>
             <p>Number of seasons: <%= show.num_of_seasons %></p>
             <p>Rating: <%= show.vote_avg %></p>
         </li>
     <% end %>
 </ul>
-</body>
-</html>
 
         <!-- <div class="card-group">
             <% @check_out.each do |show| %>

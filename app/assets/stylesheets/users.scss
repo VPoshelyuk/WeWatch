@@ -13,3 +13,24 @@
     position: fixed;
     z-index: -1;   
   }
+
+
+
+
+.follow_btn{
+    color: black;
+    background-color: rgb(224, 11, 11);
+    width: 100px;
+    margin: 1vw;
+}
+
+.follow_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.follow_btn:hover span {display:none;}
+
+.follow:hover:before {
+    content: "Unfollow"
+}
