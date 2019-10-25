@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  @import "bootstrap";
  @import "rails_bootstrap_forms";
  .main_body {
@@ -8,7 +7,40 @@
     background-attachment: fixed;
     background-position: center;
   }
-=======
-@import "bootstrap";
-@import "rails_bootstrap_forms";
->>>>>>> 82b5841b87a1d9878375314e68685f65c9f9f2e9
+
+  .main_body::after {
+    content: "";
+    background: url('https://assetstools.cosentino.com/api/v1/bynder/color/SL6/detalle/SL6-detail.jpg?w=1024&h=1024&auto=compress%2Cformat');
+    opacity: 0.85;
+    top: 0;
+    left: 15%;
+    bottom: 0;
+    right: 15%;
+    position: fixed;
+    z-index: -1;   
+  }
+
+  #nav2 {
+    padding-left: 314.4px;
+  }
+
+  nav {
+    color: white;
+  }
+
+  a {
+    transition: color 1s;
+    color: white;
+  }
+
+  a:hover {
+    color:greenyellow;
+  }
+
+  #navbarNav {
+    color:greenyellow;
+  }
+
+  div#navbarNav {
+    color: white;
+  }

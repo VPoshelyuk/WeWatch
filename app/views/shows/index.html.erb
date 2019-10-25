@@ -1,8 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h1 {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+ul {
+    text-align: center;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+}
+
+
+
+</style>
+</head>
+<body class="shows">
 <h1>Welcome to WeWatch</h1>
 <ul>
     <% @shows.each do |show| %>
-        <li><%= link_to show.name, show_path(show) %></li>
-        <p>Number of seasons: <%= show.num_of_seasons %></p>
-        <p>Rating: <%= show.vote_avg %></p>
+        <ul>
+            <%= link_to show.name, show_path(show) %>
+            <p>Number of seasons: <%= show.num_of_seasons %></p>
+            <p>Rating: <%= show.vote_avg %></p>
+        </ul>
     <% end %>
 </ul>
+</body>
+</html>
