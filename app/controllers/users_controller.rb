@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
     def show
         # byebug
+        @sorted_comments = @user.comments.sort_by{|comment| comment.created_at}.reverse
     end
 
     def edit

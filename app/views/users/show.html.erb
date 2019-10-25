@@ -11,15 +11,24 @@
 <p>Age: <%= @user.age %></p>
 <p>Followers: <%= @user.followers.size%></p>
 <p>Following: <%= @user.followings.size%></p>
+<p>Last comments:  </p>
+<ul>
+<% @sorted_comments.take(5).each do |comment| %>
+    <li><%= link_to comment.episode.name, episode_path(comment.episode) %></li>
+    <p><%= comment.comment %></p>
+<% end %>
+</ul> 
+
 <p>Recently Watched:  </p>
 <ul>
 <% @user.views.each do |view| %>
     <li><%= link_to view.show.name, show_path(view.show) %></li>
     <% @user.watches.each do |watch| %>
-        <li><%= link_to watch.episode.name, episode_path(watch.episode) %></li>
+        <p><%= link_to watch.episode.name, episode_path(watch.episode) if watch.episode.season.show == view.show && watch.watched == true %></p>
     <% end %>
 <% end %>
 </ul> 
+
 
 <% if @user.id == session[:user_id]%>
   <%= button_to "Edit Account Information", {action: "edit", controller: "users", id: @user.id}, method: "get"%> 
