@@ -26,7 +26,7 @@
   #nav2 {
     padding-left: 314.4px;
   }
-  
+
   a {
     transition: color 1s;
     color: white;
@@ -43,6 +43,7 @@
   div#navbarNav {
     color: white;
   }
+
   body{
     font-family: 'Quicksand', sans-serif;
   }
@@ -152,3 +153,19 @@ margin-left: 4px;
 }
 
 
+p {
+  color: white;
+}
+
+h1 {
+  color: white;
+
+}
+
+div.search-bar *{
+  display: inline-block;
+}
+
+div.search-bar {
+  margin-left: 22%;
+}

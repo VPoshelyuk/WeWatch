@@ -23,28 +23,29 @@
   <body class= "main_body">
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: rgb(224, 11, 11, 0.7); border-radius: 0.9rem;">
-      <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
-        <ul class="navbar-nav">
+      <a class="navbar-brand" href="<%= shows_path %>" style="color: white;">WeWatch</a>
+        <ul class="navbar-nav" >
             <% if logged_in? %>
               <li class="nav-item"><a class="nav-link" href="<%= user_path(session[:user_id]) %>">Account</a><li>
-              <li class="nav-item"><a class="nav-link" href="<%= logout_path %>" data-method="delete">Log Out</a><li>
+              <li class="nav-item"><a class="nav-link" href="<%= logout_path %>" data-method="delete" style="color: white;">Log Out</a><li>
             <% else %>
-              <li class="nav-item"><a class="nav-link" href="<%= login_path %>">Log In</a><li>
-              <li class="nav-item"><a class="nav-link" href="<%= signup_path %>">Sign Up</a><li>
+              <li class="nav-item"><a class="nav-link" href="<%= login_path %>" style="color: white;">Log In</a><li>
+              <li class="nav-item"><a class="nav-link" href="<%= signup_path %>" style="color: white;">Sign Up</a><li>
             <% end %>
-            <li><a class="nav-link" href="<%= shows_path %>">Shows</a>
-            <li><a class="nav-link" href="#">News</a>
+            <li><a class="nav-link" href="<%= shows_path %>" style="color: white;">Shows</a>
+            <li><a class="nav-link" href="#" style="color: white;">News</a>
         </ul>
+        <div class="search-bar">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">Search for Shows:</li>&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" style="color: white;">Search for Shows:</li>
         </ul>
             <%= bootstrap_form_tag(url: shows_path, method: "get") do %>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main" %></li>&nbsp
+        <ul class="navbar-nav ml-auto" >
+          <li class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main" %></li>
           <li class="nav-item"><%= submit_tag "Search", :class => "btn btn-dark"%></li>
         </ul>
-
             <% end %>
+        </div>
 </nav>
 
     <%= yield %>
