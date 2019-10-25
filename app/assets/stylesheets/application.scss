@@ -9,6 +9,21 @@
     background-attachment: fixed;
     background-position: center;
   }
+
+  .navbar {
+    height: 4vw;
+  }
+
+  
+  a {
+    transition: color 1s;
+    color: white;
+  }
+
+  a:hover {
+    color:greenyellow;
+  }
+
   body{
     font-family: 'Quicksand', sans-serif;
   }
