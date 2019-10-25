@@ -1,8 +1,46 @@
-<h1>Welcome to WeWatch</h1>
-<ul>
-    <% @shows.each do |show| %>
-        <li><%= link_to show.name, show_path(show) %></li>
-        <p>Number of seasons: <%= show.num_of_seasons %></p>
-        <p>Rating: <%= show.vote_avg %></p>
-    <% end %>
-</ul>
+<%= stylesheet_link_tag "shows" %>
+
+
+
+
+
+<div class="container_shows">
+        <div class="card-group">
+            <% @check_out.each do |show| %>
+        <div class="card w-75">
+            <div class="contain">
+            <div class="row">
+                <div class="row__inner">
+
+                <div class="tile">
+                    <div class="tile__media">
+                    <img class="tile__img" src="https://image.tmdb.org/t/p/w500/<%= show.poster_path %>" alt=""  />
+                    </div>
+                    <div class="tile__details">
+                    <div class="tile__title">
+                        <%= link_to show.name, show_path(show) %>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <% end %>
+    </div>
+	<div class="d-flex justify-content-center h-100">
+		<div class="card_shows">
+<% @shows.each do |show| %>
+			<div class="card-body">
+                <div class="btn btn-light">
+                    <%= link_to show.name, show_path(show) %>
+                </div>
+                <div class="text-nowrap" style="width: 8rem;">
+                    <p>Number of seasons: <%= show.num_of_seasons %></p>
+                    <p>Rating: <%= show.vote_avg %></p>
+                </div>
+			</div>
+<% end %>
+		</div>
+	</div>
+</div> 

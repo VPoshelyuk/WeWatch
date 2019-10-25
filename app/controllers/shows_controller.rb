@@ -1,13 +1,12 @@
 class ShowsController < ApplicationController
     def index
-        # if user input in params, show filtered results 
-        # otherwise show everything 
-        # byebug
         @shows = if params[:q] != nil
-                    Show.search_shows(params[:q])
-                 else
-                    Show.all.sort_by{ |show| show.created_at }
-                 end
+            Show.search_shows(params[:q])
+         else
+            Show.all.sort_by{ |show| show.created_at }
+         end
+
+        @check_out = Show.check_out
     end
 
     def show
