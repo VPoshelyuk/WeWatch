@@ -12,7 +12,7 @@
 <p>Followers: <%= @user.followers.size%></p>
 <p>Following: <%= @user.followings.size%></p>
 <p>Last comments:  </p>
-<ul>
+<ul class="list-container">
 <% @sorted_comments.take(5).each do |comment| %>
     <li><%= link_to comment.episode.name, episode_path(comment.episode) %></li>
     <p><%= comment.comment %></p>

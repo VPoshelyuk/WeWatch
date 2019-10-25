@@ -22,9 +22,9 @@
   
   <body class= "main_body">
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light <%# bg-light %>", style="background-color: rgb(224, 11, 11, 0.7); border-radius: 0.9rem;">
-      <a class="navbar-brand" href="<%= shows_path %>" style="color: white;">WeWatch</a>
-        <ul class="navbar-nav" >
+    <div class="navbar navbar-expand-lg navbar-light <%# bg-light %>">
+      <a class="navbar-brand" href="<%= shows_path %>">WeWatch</a>
+        <ul class="navbar-links" >
             <% if logged_in? %>
               <li class="nav-item"><a class="nav-link" href="<%= user_path(session[:user_id]) %>">Account</a><li>
               <li class="nav-item"><a class="nav-link" href="<%= logout_path %>" data-method="delete" style="color: white;">Log Out</a><li>
@@ -35,18 +35,11 @@
             <li><a class="nav-link" href="<%= shows_path %>" style="color: white;">Shows</a>
             <li><a class="nav-link" href="#" style="color: white;">News</a>
         </ul>
-        <div class="search-bar">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item" style="color: white;">Search for Shows:</li>
-        </ul>
-            <%= bootstrap_form_tag(url: shows_path, method: "get") do %>
-        <ul class="navbar-nav ml-auto" >
-          <li class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main" %></li>
-          <li class="nav-item"><%= submit_tag "Search", :class => "btn btn-dark"%></li>
-        </ul>
-            <% end %>
-        </div>
-</nav>
+        <%= form_tag({url: shows_path, method: "get"}, {class: "search-bar"}) do %>
+          <div class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main", :placeholder => "Search for shows" %></div>
+          <div class="nav-item"><%= submit_tag "Search", :class => "btn btn-dark"%></div>
+        <% end %>
+</div>
 
     <%= yield %>
   </body>

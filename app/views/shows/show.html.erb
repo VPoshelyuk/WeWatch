@@ -9,7 +9,7 @@
   <p><%= @show.overview %></p>
     <p>Number of seasons: <%= @show.num_of_seasons %></p>
     <p>Rating: <%= @show.vote_avg %></p>
-<ul>
+<ul class="list-container">
 <% @seasons.each do |season| %>
     <li><%= link_to season.name, season_path(season) %></li>
     <p>Number of episodes: <%= season.episode_count %></p>

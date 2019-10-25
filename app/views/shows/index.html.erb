@@ -10,7 +10,7 @@ h1 {
     padding-bottom: 50px;
 }
 
-ul {
+.list-container {
     text-align: center;
     padding: 5px;
     display: inline-block;
@@ -26,13 +26,13 @@ ul {
 </head>
 <body class="shows">
 <h1>Welcome to WeWatch</h1>
-<ul>
+<ul class="list-container">
     <% @shows.each do |show| %>
-        <ul>
+        <li>
             <%= link_to show.name, show_path(show) %>
             <p>Number of seasons: <%= show.num_of_seasons %></p>
             <p>Rating: <%= show.vote_avg %></p>
-        </ul>
+        </li>
     <% end %>
 </ul>
 </body>

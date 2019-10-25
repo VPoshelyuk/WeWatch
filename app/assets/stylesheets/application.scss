@@ -10,8 +10,30 @@
     background-position: center;
   }
 
+  ul {
+    list-style-type: none;
+  }
+
+
   .navbar {
-    height: 4vw;
+    height: 7vw;
+    background-color: rgba(224, 11, 11, 0.7);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .navbar-brand {
+      color: white;
+    }
+
+    .navbar-links {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
   }
 
   
@@ -142,10 +164,8 @@ h1 {
 
 }
 
-div.search-bar *{
-  display: inline-block;
-}
+.search-bar {
+  display: flex;
+  flex-direction: row; 
 
-div.search-bar {
-  margin-left: 22%;
 }
