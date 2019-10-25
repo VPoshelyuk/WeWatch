@@ -1,8 +1,31 @@
+<%= stylesheet_link_tag "seasons" %>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h1 {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+ul {
+    text-align: center;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+}
 
 
-<% if flash[:notice]%>
-  <p><%= flash[:notice]%></p>
-<% end%>
+
+</style>
+</head>
+
+<body class="user">
 <h1>Profile</h1>
 
 <p>Hello, <%= @user.user_name %></p>
@@ -39,3 +62,5 @@
     <%= button_to "Follow", {action: "create", controller: "followings"}, params:{"followee_id" => @user.id } , method: "post"%> 
   <% end %> 
 <% end %>
+</body>
+</html>
