@@ -56,3 +56,13 @@
   img.show.season {
     padding-right: 150px;
   }
+
+  div.another-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 150px
+  }
+
+  .comment_class {
+    color: white;
+  }

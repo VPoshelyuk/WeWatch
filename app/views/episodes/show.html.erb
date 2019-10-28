@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "shows" %>
+<div class="another-container">
   <h1><%= @episode.name%></h1>
 <img src="https://image.tmdb.org/t/p/w500/<%= @image_path %>" class="rounded float-right" alt="../../assets/images/no_show_pic.jpg">
   <p>Overview: <%= @episode.overview%></p>
@@ -19,7 +21,7 @@
 
 
 
-  <h3>Discuss this episode:</h3>
+  <h3 style="color: white;">Discuss this episode:</h3>
 <% @comments.each do |comment| %>
     <h4><%= link_to comment.user.user_name, user_path(comment.user) %></h4>
     <p><%= comment.comment %></p>
@@ -27,8 +29,8 @@
 <% end %>
 <% if session[:user_id] %>
     <%= form_with model: Comment.new do |f| %>
-        <%= f.label "Your comment:"%>
-        <%= f.text_field :comment %><br/>
+        <%= f.label "Your comment:", :class => "comment_class" %>
+        <%= f.text_field :comment%><br/>
         <%= f.hidden_field :episode_id, value: "#{params[:id]}" %>
         <%= f.hidden_field :user_id, value: "#{session[:user_id]}" %>
         <%= f.submit "Post it!" %>
@@ -36,3 +38,4 @@
 <% else %>
     <h4><%= link_to "Login to leave a comment", login_path %></h4>
 <% end %>
+</div>

@@ -30,7 +30,7 @@
             <li><a class="nav-link" href="<%= shows_path %>" style="color: white;">Shows</a>
             <li><a class="nav-link" href="#" style="color: white;">News</a>
         </ul>
-        <%= form_tag({url: shows_path, method: "get"}, {class: "search-bar"}) do %>
+        <%= form_tag shows_path, :method => :get, :class => "search-bar" do %>
           <div class="nav-item"><%= text_field_tag :q , "" ,  :class => "form-control_main", :placeholder => "Search for shows" %></div>
           <div class="nav-item"><%= submit_tag "Search", :class => "btn btn-dark"%></div>
         <% end %>
